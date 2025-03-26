@@ -1,0 +1,19 @@
+# Python virtual environment
+venv/
+
+# IDE files
+.idea/
+.vscode/
+
+# macOS files
+.DS_Store
+
+# Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution
+dist/
+build/
+*.egg-info/
