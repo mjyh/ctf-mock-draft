@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Draft: {{ draft.user_name }} - Infantry Online CTF</title>
+    <style>
+        body {
+            background-color: #1e1e2f;
+            color: white;
+            font-family: sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: #4e91fc;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section {
+            background-color: #2a2a40;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .team-card {
+            background-color: #333350;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .team-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #4e91fc;
+        }
+
+        .team-leadership {
+            margin-bottom: 8px;
+        }
+
+        .team-picks {
+            margin-top: 15px;
+        }
+
+        .pick-item {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border-bottom: 1px solid #444;
+        }
+
+        .pick-number {
+            flex: 0 0 30px;
+            font-weight: bold;
+        }
+
+        .player-name {
+            flex: 1;
+        }
+
+        .role-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+
+        .o-inf { background-color: #ff6666; } /* lighter red */
+        .d-inf { background-color: #cc0000; } /* darker red */
+        .o-hvy { background-color: #6699ff; } /* lighter blue */
+        .d-hvy { background-color: #0044cc; } /* darker blue */
+        .foot-jt, .jt { background-color: #cccccc; } /* light gray */
+        .vehicle-jt { background-color: #888888; } /* dark gray */
+        .med { background-color: #ffcc00; } /* yellow */
+        .eng { background-color: #cc7722; } /* orange-brown */
+        .sl { background-color: #88cc88; } /* light green */
+        .infil { background-color: #9966cc; } /* purple */
+
+        .draft-info {
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            margin-bottom: 5px;
+        }
+
+        .back-link {
+            color: #4e91fc;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .button {
+            background-color: #4e91fc;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .button:hover {
+            background-color: #3674e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="back-link">← Back to Home</a>
+        <h1>View Draft: {{ draft.user_name }}</h1>
+    </div>
+    
+    <div class="container">
+        <div class="section">
+            <div class="draft-info">
+                <div class="info-item"><strong>Draft Key:</strong> {{ draft.draft_key }}</div>
+                <div class="info-item"><strong>Created by:</strong> {{ draft.user_name }}</div>
+                <div class="info-item"><strong>Last Updated:</strong> {{ draft.submitted_at }}</div>
+                <div class="info-item"><strong>Total Picks:</strong> {{ draft.picks|length }}</div>
+            </div>
+            
+            <h2>Teams and Picks</h2>
+            <div class="team-container">
+                {% for team in teams|sort(attribute='pick_order') %}
+                <div class="team-card">
+                    <div class="team-name">{{ team.team_name }}</div>
+                    
+                    <div class="team-leadership">
+                        <strong>Captain:</strong> {{ team.captain_info.name }} {% for role in team.captain_info.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
+                    </div>
+                    
+                    {% if team.co_captain_info %}
+                    <div class="team-leadership">
+                        <strong>Co-Captain:</strong>
+                        {% for co_captain in team.co_captain_info %}
+                        {{ co_captain.name }} {% for role in co_captain.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="team-picks">
+                        <strong>Picks:</strong>
+                        <div class="pick-list">
+                            {% for pick in draft.picks %}
+                                {% if pick.team_id == team.team_id %}
+                                <div class="pick-item">
+                                    <div class="pick-number">{{ loop.index }}.</div>
+                                    <div class="player-name">
+                                        {{ pick.player_info.name }}
+                                        {% for role in pick.player_info.roles %}
+                                        <span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <a href="/" class="button">Back to Drafts</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -2,27 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cool Buttons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infantry Online CTF Mock Draft</title>
     <style>
         body {
             background-color: #1e1e2f;
             color: white;
             font-family: sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: #4e91fc;
+        }
+
+        .container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .section {
+            flex: 1;
+            min-width: 300px;
+            background-color: #2a2a40;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .button {
             background-color: #4e91fc;
             border: none;
             color: white;
-            padding: 15px 30px;
-            margin: 10px;
-            font-size: 18px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
@@ -32,32 +50,233 @@
             transform: scale(1.05);
         }
 
-        .button:active {
-            background-color: #2c5cb9;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background-color: #333350;
+        }
+
+        .role-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+
+        .o-inf { background-color: #ff6666; } /* lighter red */
+        .d-inf { background-color: #cc0000; } /* darker red */
+        .o-hvy { background-color: #6699ff; } /* lighter blue */
+        .d-hvy { background-color: #0044cc; } /* darker blue */
+        .foot-jt { background-color: #cccccc; } /* light gray */
+        .vehicle-jt { background-color: #888888; } /* dark gray */
+        .med { background-color: #ffcc00; } /* yellow */
+        .eng { background-color: #cc7722; } /* orange-brown */
+        .sl { background-color: #88cc88; } /* light green */
+        .infil { background-color: #9966cc; } /* purple */
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            background-color: #333350;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .error {
+            color: #ff5555;
+            margin-top: 5px;
+        }
+
+        .success {
+            color: #55ff55;
+            margin-top: 5px;
+        }
+
+        .draft-key {
+            font-family: monospace;
+            background-color: #333350;
+            padding: 5px;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <h1>Pick a Team</h1>
-    <button class="button" id="btn1">Team Alpha</button>
-    <button class="button" id="btn2">Team Bravo</button>
-    <button class="button" id="btn3">Team Charlie</button>
+    <h1>Infantry Online CTF Mock Draft</h1>
+    
+    <div class="container">
+        <div class="section">
+            <h2>Create New Draft</h2>
+            <div class="form-group">
+                <label for="userName">Your Name:</label>
+                <input type="text" id="userName" placeholder="Enter a unique identifier">
+                <div id="createError" class="error"></div>
+                <div id="createSuccess" class="success"></div>
+            </div>
+            <button class="button" id="createDraftBtn">Create Draft</button>
+            
+            <div id="draftKeyContainer" style="display: none; margin-top: 15px;">
+                <h3>Your Draft Key:</h3>
+                <p>KEEP THIS KEY TO EDIT YOUR DRAFT LATER</p>
+                <p class="draft-key" id="draftKeyDisplay"></p>
+                <button class="button" id="goToDraftBtn">Go to Draft</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Edit Existing Draft</h2>
+            <div class="form-group">
+                <label for="draftKey">Draft Key:</label>
+                <input type="text" id="draftKey" placeholder="Enter your draft key">
+                <div id="editError" class="error"></div>
+            </div>
+            <button class="button" id="editDraftBtn">Edit Draft</button>
+        </div>
+    </div>
+    
+    <div class="container" style="margin-top: 20px;">
+        <div class="section">
+            <h2>Current Player ADPs</h2>
+            <table id="playerTable">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>ADP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in players %}
+                    <tr>
+                        <td>
+                            {{ player.name }}
+                            {% for role in player.roles %}
+                            <span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>
+                            {% endfor %}
+                        </td>
+                        <td>{% if player.adp %}{{ "%.1f"|format(player.adp) }}{% else %}N/A{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Existing Drafts</h2>
+            <table id="draftTable">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Picks</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for draft in drafts %}
+                    <tr>
+                        <td>{{ draft.user_name }}</td>
+                        <td>{{ draft.picks|length }}</td>
+                        <td>{{ draft.submitted_at }}</td>
+                        <td>
+                            <a href="/view_draft/{{ draft.draft_key }}" class="button">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script>
-        function toggleColor(button) {
-            const isActive = button.classList.contains('selected');
-            if (isActive) {
-                button.classList.remove('selected');
-                button.style.backgroundColor = '#4e91fc';
-            } else {
-                button.classList.add('selected');
-                button.style.backgroundColor = '#00c472';
+        document.getElementById('createDraftBtn').addEventListener('click', function() {
+            const userName = document.getElementById('userName').value.trim();
+            const errorElem = document.getElementById('createError');
+            const successElem = document.getElementById('createSuccess');
+            
+            errorElem.textContent = '';
+            successElem.textContent = '';
+            
+            if (!userName) {
+                errorElem.textContent = 'Please enter your name';
+                return;
             }
-        }
-
-        document.getElementById('btn1').addEventListener('click', () => toggleColor(btn1));
-        document.getElementById('btn2').addEventListener('click', () => toggleColor(btn2));
-        document.getElementById('btn3').addEventListener('click', () => toggleColor(btn3));
+            
+            fetch('/drafts/new', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user_name: userName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    errorElem.textContent = data.error;
+                } else {
+                    document.getElementById('draftKeyDisplay').textContent = data.draft_key;
+                    document.getElementById('draftKeyContainer').style.display = 'block';
+                    successElem.textContent = data.message;
+                    
+                    // Store the draft key for the Go to Draft button
+                    document.getElementById('goToDraftBtn').setAttribute('data-key', data.draft_key);
+                }
+            })
+            .catch(error => {
+                errorElem.textContent = 'An error occurred. Please try again.';
+                console.error('Error:', error);
+            });
+        });
+        
+        document.getElementById('goToDraftBtn').addEventListener('click', function() {
+            const draftKey = this.getAttribute('data-key');
+            if (draftKey) {
+                window.location.href = '/draft/' + draftKey;
+            }
+        });
+        
+        document.getElementById('editDraftBtn').addEventListener('click', function() {
+            const draftKey = document.getElementById('draftKey').value.trim();
+            const errorElem = document.getElementById('editError');
+            
+            errorElem.textContent = '';
+            
+            if (!draftKey) {
+                errorElem.textContent = 'Please enter a draft key';
+                return;
+            }
+            
+            // First check if the draft exists
+            fetch('/drafts/' + draftKey)
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/draft/' + draftKey;
+                    } else {
+                        errorElem.textContent = 'Invalid draft key. Please check and try again.';
+                    }
+                })
+                .catch(error => {
+                    errorElem.textContent = 'An error occurred. Please try again.';
+                    console.error('Error:', error);
+                });
+        });
     </script>
 </body>
 </html>

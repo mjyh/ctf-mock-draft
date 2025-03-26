@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft: {{ draft.user_name }} - Infantry Online CTF</title>
+    <style>
+        body {
+            background-color: #1e1e2f;
+            color: white;
+            font-family: sans-serif;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: #4e91fc;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .draft-key-container {
+            background-color: #ff6666;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .draft-key {
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .left-pane, .right-pane {
+            padding: 15px;
+            background-color: #2a2a40;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .left-pane {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .right-pane {
+            flex: 2;
+            min-width: 400px;
+        }
+
+        .team-card {
+            background-color: #333350;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .team-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .team-leadership {
+            margin-bottom: 5px;
+        }
+
+        .team-picks {
+            margin-top: 10px;
+        }
+
+        .pick-item {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border-bottom: 1px solid #444;
+        }
+
+        .pick-number {
+            flex: 0 0 30px;
+            font-weight: bold;
+        }
+
+        .player-name {
+            flex: 1;
+        }
+
+        .current-pick {
+            background-color: #4e91fc;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .button {
+            background-color: #4e91fc;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #3674e0;
+        }
+
+        .button.remove {
+            background-color: #e74c3c;
+        }
+
+        .button.remove:hover {
+            background-color: #c0392b;
+        }
+
+        .button.submit {
+            background-color: #2ecc71;
+            font-size: 16px;
+            padding: 12px 20px;
+            margin-top: 20px;
+        }
+
+        .button.submit:hover {
+            background-color: #27ae60;
+        }
+
+        .player-card {
+            background-color: #333350;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .player-info {
+            flex: 1;
+        }
+
+        .role-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+
+        .o-inf { background-color: #ff6666; } /* lighter red */
+        .d-inf { background-color: #cc0000; } /* darker red */
+        .o-hvy { background-color: #6699ff; } /* lighter blue */
+        .d-hvy { background-color: #0044cc; } /* darker blue */
+        .foot-jt, .jt { background-color: #cccccc; } /* light gray */
+        .vehicle-jt { background-color: #888888; } /* dark gray */
+        .med { background-color: #ffcc00; } /* yellow */
+        .eng { background-color: #cc7722; } /* orange-brown */
+        .sl { background-color: #88cc88; } /* light green */
+        .infil { background-color: #9966cc; } /* purple */
+
+        .search-bar {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #333350;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: white;
+            transform: translateX(110%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.success {
+            background-color: #2ecc71;
+        }
+
+        .notification.error {
+            background-color: #e74c3c;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .back-link {
+            color: #4e91fc;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="back-link">← Back to Home</a>
+        <h1>Draft for: {{ draft.user_name }}</h1>
+    </div>
+    
+    <div class="draft-key-container">
+        <p>KEEP THIS KEY TO EDIT YOUR DRAFT LATER</p>
+        <div class="draft-key">{{ draft.draft_key }}</div>
+    </div>
+    
+    <div class="container">
+        <div class="left-pane">
+            <h2>Teams</h2>
+            
+            {% for team in teams|sort(attribute='pick_order') %}
+            <div class="team-card" id="team-{{ team.team_id }}">
+                <div class="team-name">{{ team.team_name }}</div>
+                
+                <div class="team-leadership">
+                    <strong>Captain:</strong> {{ team.captain_info.name }} {% for role in team.captain_info.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
+                </div>
+                
+                {% if team.co_captain_info %}
+                <div class="team-leadership">
+                    <strong>Co-Captain:</strong>
+                    {% for co_captain in team.co_captain_info %}
+                    {{ co_captain.name }} {% for role in co_captain.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <div class="team-picks">
+                    <strong>Picks:</strong>
+                    <div class="pick-list">
+                        <!-- Picks will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="right-pane">
+            <div id="current-pick" class="current-pick">
+                <!-- Current pick info will be displayed here -->
+            </div>
+            
+            <h2>Undrafted Players</h2>
+            <input type="text" id="playerSearch" class="search-bar" placeholder="Search players...">
+            
+            <div id="undraftedPlayers">
+                <!-- Undrafted players will be displayed here -->
+            </div>
+            
+            <div class="actions">
+                <button id="removeLastBtn" class="button remove">Remove Last Pick</button>
+                <button id="submitDraftBtn" class="button submit">Submit Draft</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="notification" class="notification">
+        <span id="notificationText"></span>
+    </div>
+    
+    <script>
+        // Initialization
+        let draftKey = '{{ draft.draft_key }}';
+        let draftPicks = [];
+        let allPlayers = [];
+        let allTeams = [];
+        let undraftedPlayers = [];
+        
+        // Initialize data
+        function initializeData() {
+            // Get initial data from the backend
+            Promise.all([
+                fetch('/players').then(r => r.json()),
+                fetch('/teams').then(r => r.json()),
+                fetch('/drafts/' + draftKey).then(r => r.json())
+            ]).then(([players, teams, draft]) => {
+                allPlayers = players;
+                allTeams = teams;
+                
+                // Initialize draft picks if there are any
+                if (draft && draft.picks) {
+                    draftPicks = draft.picks;
+                }
+                
+                updateUndraftedPlayers();
+                updateTeamDisplay();
+                updateCurrentPick();
+            });
+        }
+        
+        // Update the list of undrafted players
+        function updateUndraftedPlayers() {
+            // Get IDs of drafted players
+            const draftedPlayerIds = draftPicks.map(pick => pick.player_id);
+            
+            // Filter out drafted players
+            undraftedPlayers = allPlayers.filter(player => !draftedPlayerIds.includes(player.player_id));
+            
+            // Sort by ADP (null at the end)
+            undraftedPlayers.sort((a, b) => {
+                if (a.adp === null && b.adp === null) return a.name.localeCompare(b.name);
+                if (a.adp === null) return 1;
+                if (b.adp === null) return -1;
+                return a.adp - b.adp;
+            });
+            
+            renderUndraftedPlayers();
+        }
+        
+        // Render the undrafted players list
+        function renderUndraftedPlayers() {
+            const container = document.getElementById('undraftedPlayers');
+            const searchTerm = document.getElementById('playerSearch').value.toLowerCase();
+            
+            // Filter by search term if it exists
+            const filteredPlayers = searchTerm 
+                ? undraftedPlayers.filter(player => 
+                    player.name.toLowerCase().includes(searchTerm) || 
+                    player.roles.some(role => role.toLowerCase().includes(searchTerm)))
+                : undraftedPlayers;
+            
+            // Clear the container
+            container.innerHTML = '';
+            
+            // Add each player card
+            filteredPlayers.forEach(player => {
+                const card = document.createElement('div');
+                card.className = 'player-card';
+                
+                const info = document.createElement('div');
+                info.className = 'player-info';
+                
+                // Display player name, roles, and ADP in the same line
+                const nameAdp = document.createElement('div');
+                nameAdp.innerHTML = `<strong>${player.name}</strong> `;
+                
+                // Add role tags directly into the nameAdp element
+                player.roles.forEach(role => {
+                    const tag = document.createElement('span');
+                    tag.className = 'role-tag ' + role.toLowerCase().replace(' ', '-');
+                    tag.textContent = role;
+                    nameAdp.appendChild(tag);
+                });
+                
+                // Add ADP info
+                if (player.adp) {
+                    const adpSpan = document.createElement('span');
+                    adpSpan.textContent = ` (ADP: ${player.adp.toFixed(1)})`;
+                    adpSpan.style.marginLeft = '5px';
+                    nameAdp.appendChild(adpSpan);
+                }
+                
+                info.appendChild(nameAdp);
+                
+                card.appendChild(info);
+                
+                // Add draft button
+                const draftBtn = document.createElement('button');
+                draftBtn.className = 'button';
+                draftBtn.textContent = 'Draft';
+                draftBtn.onclick = () => draftPlayer(player.player_id);
+                card.appendChild(draftBtn);
+                
+                container.appendChild(card);
+            });
+        }
+        
+        // Update the team display with current picks
+        function updateTeamDisplay() {
+            // Initialize all pick lists to empty
+            allTeams.forEach(team => {
+                const pickList = document.querySelector(`#team-${team.team_id} .pick-list`);
+                pickList.innerHTML = '';
+            });
+            
+            // Add each pick to the appropriate team
+            draftPicks.forEach((pick, index) => {
+                const team = allTeams.find(t => t.team_id === pick.team_id);
+                if (!team) return;
+                
+                const pickList = document.querySelector(`#team-${team.team_id} .pick-list`);
+                const player = allPlayers.find(p => p.player_id === pick.player_id);
+                
+                if (player) {
+                    const pickItem = document.createElement('div');
+                    pickItem.className = 'pick-item';
+                    
+                    const pickNumber = document.createElement('div');
+                    pickNumber.className = 'pick-number';
+                    pickNumber.textContent = (index + 1) + '.';
+                    
+                    const playerNameElem = document.createElement('div');
+                    playerNameElem.className = 'player-name';
+                    playerNameElem.textContent = player.name + ' ';
+                    
+                    // Add roles directly to the player name element
+                    player.roles.forEach(role => {
+                        const tag = document.createElement('span');
+                        tag.className = 'role-tag ' + role.toLowerCase().replace(' ', '-');
+                        tag.textContent = role;
+                        playerNameElem.appendChild(tag);
+                    });
+                    
+                    pickItem.appendChild(pickNumber);
+                    pickItem.appendChild(playerNameElem);
+                    pickList.appendChild(pickItem);
+                }
+            });
+        }
+        
+        // Determine which team picks next based on snake draft logic
+        function determineNextPick() {
+            if (draftPicks.length === 0) {
+                // First pick, team with pick_order=1 goes first
+                return allTeams.find(team => team.pick_order === 1);
+            }
+            
+            const numTeams = allTeams.length;
+            const currentPickNumber = draftPicks.length;
+            const roundNumber = Math.floor(currentPickNumber / numTeams) + 1;
+            const pickInRound = currentPickNumber % numTeams;
+            
+            // In odd rounds (1, 3, 5...), teams pick in ascending order of pick_order
+            // In even rounds (2, 4, 6...), teams pick in descending order of pick_order
+            let targetPickOrder;
+            
+            if (roundNumber % 2 === 1) {  // Odd round
+                targetPickOrder = pickInRound + 1;
+            } else {  // Even round
+                targetPickOrder = numTeams - pickInRound;
+            }
+            
+            return allTeams.find(team => team.pick_order === targetPickOrder);
+        }
+        
+        // Update the current pick display
+        function updateCurrentPick() {
+            const nextTeam = determineNextPick();
+            const currentPickElem = document.getElementById('current-pick');
+            
+            if (nextTeam) {
+                currentPickElem.textContent = `Next Pick: ${nextTeam.team_name}`;
+            } else {
+                currentPickElem.textContent = 'Draft complete';
+            }
+        }
+        
+        // Draft a player
+        function draftPlayer(playerId) {
+            const nextTeam = determineNextPick();
+            if (!nextTeam) return;
+            
+            // Add the pick
+            draftPicks.push({
+                team_id: nextTeam.team_id,
+                player_id: playerId
+            });
+            
+            // Update the UI
+            updateUndraftedPlayers();
+            updateTeamDisplay();
+            updateCurrentPick();
+        }
+        
+        // Remove the last pick
+        function removeLastPick() {
+            if (draftPicks.length === 0) return;
+            
+            draftPicks.pop();
+            
+            // Update the UI
+            updateUndraftedPlayers();
+            updateTeamDisplay();
+            updateCurrentPick();
+        }
+        
+        // Submit the draft
+        function submitDraft() {
+            fetch('/drafts/' + draftKey, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ picks: draftPicks })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    showNotification(data.error, 'error');
+                } else {
+                    showNotification('Draft submitted successfully!', 'success');
+                }
+            })
+            .catch(error => {
+                showNotification('An error occurred. Please try again.', 'error');
+                console.error('Error:', error);
+            });
+        }
+        
+        // Show a notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            const text = document.getElementById('notificationText');
+            
+            text.textContent = message;
+            notification.className = 'notification ' + type + ' show';
+            
+            setTimeout(() => {
+                notification.className = 'notification ' + type;
+            }, 3000);
+        }
+        
+        // Event listeners
+        document.getElementById('playerSearch').addEventListener('input', renderUndraftedPlayers);
+        document.getElementById('removeLastBtn').addEventListener('click', removeLastPick);
+        document.getElementById('submitDraftBtn').addEventListener('click', submitDraft);
+        
+        // Initialize the page
+        initializeData();
+    </script>
+</body>
+</html>
