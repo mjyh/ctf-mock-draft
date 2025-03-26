@@ -1,7 +1,7 @@
 [
   {
     "team_id": 101,
-    "team_name": "WAAFH Captain",
+    "team_name": "We Are All Friends Here",
     "captain": 102,
     "co_captain": [
       1
@@ -10,7 +10,7 @@
   },
   {
     "team_id": 102,
-    "team_name": "TD Captain",
+    "team_name": "Takuteku Deshtrushyon",
     "captain": 103,
     "co_captain": [
       2
@@ -19,7 +19,7 @@
   },
   {
     "team_id": 103,
-    "team_name": "SP Captain",
+    "team_name": "SP",
     "captain": 104,
     "co_captain": [
       3
@@ -28,7 +28,7 @@
   },
   {
     "team_id": 104,
-    "team_name": "FO Captain",
+    "team_name": "Fangs Out",
     "captain": 105,
     "co_captain": [
       4
@@ -37,7 +37,7 @@
   },
   {
     "team_id": 105,
-    "team_name": "CFB Captain",
+    "team_name": "Coming From Behind",
     "captain": 106,
     "co_captain": [
       5
@@ -46,7 +46,7 @@
   },
   {
     "team_id": 106,
-    "team_name": "CBC Captain",
+    "team_name": "Carebear Countdown",
     "captain": 107,
     "co_captain": [
       6

@@ -46,23 +46,35 @@
             background-color: #2a2a40;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: auto;
         }
 
         .left-pane {
-            flex: 1;
-            min-width: 300px;
+            flex: 2;
+            min-width: 600px;
+            max-height: calc(100vh - 200px);
         }
 
         .right-pane {
-            flex: 2;
-            min-width: 400px;
+            flex: 1;
+            min-width: 350px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
         }
 
         .team-card {
             background-color: #333350;
             border-radius: 6px;
             padding: 10px;
-            margin-bottom: 15px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .team-name {
@@ -77,6 +89,9 @@
 
         .team-picks {
             margin-top: 10px;
+            flex-grow: 1;
+            overflow-y: auto;
+            max-height: 250px;
         }
 
         .pick-item {
@@ -241,31 +256,33 @@
         <div class="left-pane">
             <h2>Teams</h2>
             
-            {% for team in teams|sort(attribute='pick_order') %}
-            <div class="team-card" id="team-{{ team.team_id }}">
-                <div class="team-name">{{ team.team_name }}</div>
-                
-                <div class="team-leadership">
-                    <strong>Captain:</strong> {{ team.captain_info.name }} {% for role in team.captain_info.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
-                </div>
-                
-                {% if team.co_captain_info %}
-                <div class="team-leadership">
-                    <strong>Co-Captain:</strong>
-                    {% for co_captain in team.co_captain_info %}
-                    {{ co_captain.name }} {% for role in co_captain.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
-                    {% endfor %}
-                </div>
-                {% endif %}
-                
-                <div class="team-picks">
-                    <strong>Picks:</strong>
-                    <div class="pick-list">
-                        <!-- Picks will be dynamically added here -->
+            <div class="team-grid">
+                {% for team in teams|sort(attribute='pick_order') %}
+                <div class="team-card" id="team-{{ team.team_id }}">
+                    <div class="team-name">{{ team.team_name }}</div>
+                    
+                    <div class="team-leadership">
+                        <strong>Captain:</strong> {{ team.captain_info.name|e }} {% for role in team.captain_info.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
+                    </div>
+                    
+                    {% if team.co_captain_info %}
+                    <div class="team-leadership">
+                        <strong>Co-Captain:</strong>
+                        {% for co_captain in team.co_captain_info %}
+                        {{ co_captain.name|e }} {% for role in co_captain.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="team-picks">
+                        <strong>Picks:</strong>
+                        <div class="pick-list">
+                            <!-- Picks will be dynamically added here -->
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
         
         <div class="right-pane">
@@ -292,6 +309,16 @@
     </div>
     
     <script>
+        // Helper function to escape HTML special characters
+        function escapeHtml(unsafe) {
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        }
+        
         // Initialization
         let draftKey = '{{ draft.draft_key }}';
         let draftPicks = [];
@@ -303,19 +330,21 @@
         function initializeData() {
             // Get initial data from the backend
             Promise.all([
-                fetch('/players').then(r => r.json()),
+                fetch('/players').then(r => r.json()),  // We still need all players for displaying picks
                 fetch('/teams').then(r => r.json()),
-                fetch('/drafts/' + draftKey).then(r => r.json())
-            ]).then(([players, teams, draft]) => {
+                fetch('/drafts/' + draftKey).then(r => r.json()),
+                fetch('/undrafted_players/' + draftKey).then(r => r.json()) // Get undrafted players from backend
+            ]).then(([players, teams, draft, availablePlayers]) => {
                 allPlayers = players;
                 allTeams = teams;
+                undraftedPlayers = availablePlayers;
                 
                 // Initialize draft picks if there are any
                 if (draft && draft.picks) {
                     draftPicks = draft.picks;
                 }
                 
-                updateUndraftedPlayers();
+                renderUndraftedPlayers();
                 updateTeamDisplay();
                 updateCurrentPick();
             });
@@ -323,21 +352,13 @@
         
         // Update the list of undrafted players
         function updateUndraftedPlayers() {
-            // Get IDs of drafted players
-            const draftedPlayerIds = draftPicks.map(pick => pick.player_id);
-            
-            // Filter out drafted players
-            undraftedPlayers = allPlayers.filter(player => !draftedPlayerIds.includes(player.player_id));
-            
-            // Sort by ADP (null at the end)
-            undraftedPlayers.sort((a, b) => {
-                if (a.adp === null && b.adp === null) return a.name.localeCompare(b.name);
-                if (a.adp === null) return 1;
-                if (b.adp === null) return -1;
-                return a.adp - b.adp;
-            });
-            
-            renderUndraftedPlayers();
+            // Fetch the latest undrafted players that excludes captains, co-captains, and already drafted players
+            fetch('/undrafted_players/' + draftKey)
+                .then(response => response.json())
+                .then(availablePlayers => {
+                    undraftedPlayers = availablePlayers;
+                    renderUndraftedPlayers();
+                });
         }
         
         // Render the undrafted players list
@@ -365,7 +386,14 @@
                 
                 // Display player name, roles, and ADP in the same line
                 const nameAdp = document.createElement('div');
-                nameAdp.innerHTML = `<strong>${player.name}</strong> `;
+                
+                // Create a strong element for the player name
+                const nameStrong = document.createElement('strong');
+                nameStrong.textContent = player.name;
+                nameAdp.appendChild(nameStrong);
+                
+                // Add a space after the name
+                nameAdp.appendChild(document.createTextNode(' '));
                 
                 // Add role tags directly into the nameAdp element
                 player.roles.forEach(role => {
@@ -424,6 +452,7 @@
                     
                     const playerNameElem = document.createElement('div');
                     playerNameElem.className = 'player-name';
+                    // For textContent, we don't need to escape HTML as it doesn't interpret HTML
                     playerNameElem.textContent = player.name + ' ';
                     
                     // Add roles directly to the player name element
@@ -489,8 +518,11 @@
                 player_id: playerId
             });
             
+            // Immediately remove the drafted player from undrafted list
+            undraftedPlayers = undraftedPlayers.filter(player => player.player_id !== playerId);
+            
             // Update the UI
-            updateUndraftedPlayers();
+            renderUndraftedPlayers();
             updateTeamDisplay();
             updateCurrentPick();
         }
@@ -499,10 +531,27 @@
         function removeLastPick() {
             if (draftPicks.length === 0) return;
             
-            draftPicks.pop();
+            // Get the last pick before removing it
+            const lastPick = draftPicks.pop();
+            
+            // Find the player in allPlayers
+            const removedPlayer = allPlayers.find(player => player.player_id === lastPick.player_id);
+            
+            // If found, add it back to undrafted players
+            if (removedPlayer) {
+                undraftedPlayers.push(removedPlayer);
+                
+                // Sort undrafted players again
+                undraftedPlayers.sort((a, b) => {
+                    if (a.adp === null && b.adp === null) return a.name.localeCompare(b.name);
+                    if (a.adp === null) return 1;
+                    if (b.adp === null) return -1;
+                    return a.adp - b.adp;
+                });
+            }
             
             // Update the UI
-            updateUndraftedPlayers();
+            renderUndraftedPlayers();
             updateTeamDisplay();
             updateCurrentPick();
         }

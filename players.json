@@ -1,23 +1,5 @@
 [
   {
-    "player_id": 45,
-    "name": "anjro",
-    "roles": [
-      "D Inf",
-      "O Inf"
-    ],
-    "adp": 3.0
-  },
-  {
-    "player_id": 8,
-    "name": "baal",
-    "roles": [
-      "D Inf",
-      "O Inf"
-    ],
-    "adp": 3.0
-  },
-  {
     "player_id": 55,
     "name": "ANTTTTT",
     "roles": [
@@ -25,25 +7,7 @@
       "D Inf",
       "D Hvy"
     ],
-    "adp": 4.0
-  },
-  {
-    "player_id": 28,
-    "name": "Breakdance",
-    "roles": [
-      "Eng",
-      "SL"
-    ],
-    "adp": 5.0
-  },
-  {
-    "player_id": 15,
-    "name": "bt",
-    "roles": [
-      "Eng",
-      "D Inf"
-    ],
-    "adp": 6.5
+    "adp": 2.0
   },
   {
     "player_id": 46,
@@ -53,54 +17,7 @@
       "Eng",
       "SL"
     ],
-    "adp": 7.5
-  },
-  {
-    "player_id": 19,
-    "name": "Amok",
-    "roles": [
-      "Med",
-      "SL",
-      "D Inf"
-    ],
-    "adp": 8.5
-  },
-  {
-    "player_id": 26,
-    "name": "Axidus",
-    "roles": [
-      "O Hvy",
-      "O Inf",
-      "SL"
-    ],
-    "adp": 9.5
-  },
-  {
-    "player_id": 108,
-    "name": "billlaaaay",
-    "roles": [
-      "D Inf"
-    ],
-    "adp": 10.5
-  },
-  {
-    "player_id": 12,
-    "name": "bonds",
-    "roles": [
-      "Med",
-      "SL"
-    ],
-    "adp": 11.5
-  },
-  {
-    "player_id": 84,
-    "name": "Bowen",
-    "roles": [
-      "O Hvy",
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": 12.5
+    "adp": 3.0
   },
   {
     "player_id": 73,
@@ -108,16 +25,7 @@
     "roles": [
       "D Inf"
     ],
-    "adp": 13.0
-  },
-  {
-    "player_id": 47,
-    "name": "Bozza",
-    "roles": [
-      "O Hvy",
-      "D Hvy"
-    ],
-    "adp": 13.5
+    "adp": 3.0
   },
   {
     "player_id": 60,
@@ -127,7 +35,107 @@
       "D Inf",
       "O Hvy"
     ],
-    "adp": 14.0
+    "adp": 4.0
+  },
+  {
+    "player_id": 102,
+    "name": "Verb",
+    "roles": [
+      "Eng"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 45,
+    "name": "anjro",
+    "roles": [
+      "D Inf",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 8,
+    "name": "baal",
+    "roles": [
+      "D Inf",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 28,
+    "name": "Breakdance",
+    "roles": [
+      "Eng",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 15,
+    "name": "bt",
+    "roles": [
+      "Eng",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 19,
+    "name": "Amok",
+    "roles": [
+      "Med",
+      "SL",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 26,
+    "name": "Axidus",
+    "roles": [
+      "O Hvy",
+      "O Inf",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 108,
+    "name": "billlaaaay",
+    "roles": [
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 12,
+    "name": "bonds",
+    "roles": [
+      "Med",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 84,
+    "name": "Bowen",
+    "roles": [
+      "O Hvy",
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 47,
+    "name": "Bozza",
+    "roles": [
+      "O Hvy",
+      "D Hvy"
+    ],
+    "adp": null
   },
   {
     "player_id": 13,
@@ -137,7 +145,7 @@
       "O Inf",
       "Med"
     ],
-    "adp": 14.5
+    "adp": null
   },
   {
     "player_id": 109,
@@ -147,7 +155,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 15.5
+    "adp": null
   },
   {
     "player_id": 51,
@@ -156,7 +164,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 16.5
+    "adp": null
   },
   {
     "player_id": 27,
@@ -165,7 +173,7 @@
       "SL",
       "D Inf"
     ],
-    "adp": 17.5
+    "adp": null
   },
   {
     "player_id": 100,
@@ -174,7 +182,7 @@
       "D Inf",
       "O Inf"
     ],
-    "adp": 17.5
+    "adp": null
   },
   {
     "player_id": 89,
@@ -182,7 +190,7 @@
     "roles": [
       "JT"
     ],
-    "adp": 17.5
+    "adp": null
   },
   {
     "player_id": 85,
@@ -191,7 +199,7 @@
       "Infil",
       "D Inf"
     ],
-    "adp": 18.0
+    "adp": null
   },
   {
     "player_id": 14,
@@ -201,7 +209,7 @@
       "O Hvy",
       "O Inf"
     ],
-    "adp": 18.5
+    "adp": null
   },
   {
     "player_id": 36,
@@ -211,7 +219,7 @@
       "D Hvy",
       "O Inf"
     ],
-    "adp": 19.5
+    "adp": null
   },
   {
     "player_id": 107,
@@ -220,7 +228,7 @@
       "Eng",
       "SL"
     ],
-    "adp": 20.5
+    "adp": null
   },
   {
     "player_id": 62,
@@ -229,7 +237,7 @@
       "D Inf",
       "D Hvy"
     ],
-    "adp": 21.5
+    "adp": null
   },
   {
     "player_id": 92,
@@ -239,7 +247,7 @@
       "D Hvy",
       "O Inf"
     ],
-    "adp": 22.5
+    "adp": null
   },
   {
     "player_id": 18,
@@ -249,7 +257,7 @@
       "Eng",
       "SL"
     ],
-    "adp": 23.5
+    "adp": null
   },
   {
     "player_id": 94,
@@ -259,7 +267,7 @@
       "Med",
       "Eng"
     ],
-    "adp": 24.5
+    "adp": null
   },
   {
     "player_id": 99,
@@ -268,7 +276,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 25.5
+    "adp": null
   },
   {
     "player_id": 40,
@@ -278,7 +286,7 @@
       "D Inf",
       "SL"
     ],
-    "adp": 26.5
+    "adp": null
   },
   {
     "player_id": 68,
@@ -288,7 +296,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 27.5
+    "adp": null
   },
   {
     "player_id": 64,
@@ -297,7 +305,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 32.0
+    "adp": null
   },
   {
     "player_id": 2,
@@ -307,7 +315,7 @@
       "O Hvy",
       "D Hvy"
     ],
-    "adp": 33.0
+    "adp": null
   },
   {
     "player_id": 10,
@@ -316,7 +324,7 @@
       "D Inf",
       "O Inf"
     ],
-    "adp": 34.0
+    "adp": null
   },
   {
     "player_id": 61,
@@ -325,7 +333,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 35.0
+    "adp": null
   },
   {
     "player_id": 30,
@@ -335,7 +343,7 @@
       "SL",
       "O Inf"
     ],
-    "adp": 36.0
+    "adp": null
   },
   {
     "player_id": 24,
@@ -343,7 +351,7 @@
     "roles": [
       "D Inf"
     ],
-    "adp": 37.0
+    "adp": null
   },
   {
     "player_id": 110,
@@ -351,7 +359,7 @@
     "roles": [
       "Med"
     ],
-    "adp": 38.0
+    "adp": null
   },
   {
     "player_id": 101,
@@ -361,7 +369,7 @@
       "D Hvy",
       "O Inf"
     ],
-    "adp": 39.0
+    "adp": null
   },
   {
     "player_id": 67,
@@ -371,7 +379,7 @@
       "JT",
       "D Hvy"
     ],
-    "adp": 40.0
+    "adp": null
   },
   {
     "player_id": 98,
@@ -380,7 +388,7 @@
       "Med",
       "SL"
     ],
-    "adp": 41.0
+    "adp": null
   },
   {
     "player_id": 42,
@@ -390,7 +398,7 @@
       "Infil",
       "Med"
     ],
-    "adp": 42.0
+    "adp": null
   },
   {
     "player_id": 3,
@@ -398,7 +406,7 @@
     "roles": [
       "O Inf"
     ],
-    "adp": 43.0
+    "adp": null
   },
   {
     "player_id": 39,
@@ -408,7 +416,7 @@
       "JT",
       "O Inf"
     ],
-    "adp": 44.0
+    "adp": null
   },
   {
     "player_id": 9,
@@ -418,7 +426,7 @@
       "O Hvy",
       "Eng"
     ],
-    "adp": 45.0
+    "adp": null
   },
   {
     "player_id": 35,
@@ -428,7 +436,7 @@
       "SL",
       "D Inf"
     ],
-    "adp": 46.0
+    "adp": null
   },
   {
     "player_id": 4,
@@ -437,7 +445,7 @@
       "O Inf",
       "O Hvy"
     ],
-    "adp": 47.0
+    "adp": null
   },
   {
     "player_id": 49,
@@ -447,7 +455,7 @@
       "SL",
       "D Inf"
     ],
-    "adp": 48.0
+    "adp": null
   },
   {
     "player_id": 53,
@@ -456,7 +464,7 @@
       "D Inf",
       "SL"
     ],
-    "adp": 49.0
+    "adp": null
   },
   {
     "player_id": 37,
@@ -464,7 +472,7 @@
     "roles": [
       "O Inf"
     ],
-    "adp": 50.0
+    "adp": null
   },
   {
     "player_id": 111,
@@ -472,7 +480,7 @@
     "roles": [
       "O Inf"
     ],
-    "adp": 51.0
+    "adp": null
   },
   {
     "player_id": 65,
@@ -481,7 +489,7 @@
       "D Hvy",
       "O Hvy"
     ],
-    "adp": 52.0
+    "adp": null
   },
   {
     "player_id": 16,
@@ -491,7 +499,7 @@
       "O Hvy",
       "D Hvy"
     ],
-    "adp": 53.0
+    "adp": null
   },
   {
     "player_id": 69,
@@ -501,7 +509,7 @@
       "O Hvy",
       "D Inf"
     ],
-    "adp": 54.0
+    "adp": null
   },
   {
     "player_id": 95,
@@ -510,7 +518,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 55.0
+    "adp": null
   },
   {
     "player_id": 112,
@@ -519,7 +527,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 56.0
+    "adp": null
   },
   {
     "player_id": 86,
@@ -527,7 +535,7 @@
     "roles": [
       "Med"
     ],
-    "adp": 57.0
+    "adp": null
   },
   {
     "player_id": 88,
@@ -535,7 +543,7 @@
     "roles": [
       "D Inf"
     ],
-    "adp": 58.0
+    "adp": null
   },
   {
     "player_id": 87,
@@ -545,7 +553,7 @@
       "O Hvy",
       "D Inf"
     ],
-    "adp": 59.0
+    "adp": null
   },
   {
     "player_id": 22,
@@ -555,7 +563,7 @@
       "O Hvy",
       "D Inf"
     ],
-    "adp": 60.0
+    "adp": null
   },
   {
     "player_id": 80,
@@ -564,7 +572,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 61.0
+    "adp": null
   },
   {
     "player_id": 77,
@@ -574,7 +582,7 @@
       "O Inf",
       "D Hvy"
     ],
-    "adp": 62.0
+    "adp": null
   },
   {
     "player_id": 38,
@@ -584,7 +592,7 @@
       "Med",
       "Eng"
     ],
-    "adp": 63.0
+    "adp": null
   },
   {
     "player_id": 58,
@@ -594,7 +602,7 @@
       "O Hvy",
       "D Inf"
     ],
-    "adp": 64.0
+    "adp": null
   },
   {
     "player_id": 103,
@@ -604,7 +612,7 @@
       "O Inf",
       "Med"
     ],
-    "adp": 65.0
+    "adp": null
   },
   {
     "player_id": 91,
@@ -614,7 +622,7 @@
       "JT",
       "D Inf"
     ],
-    "adp": 66.0
+    "adp": null
   },
   {
     "player_id": 105,
@@ -623,7 +631,7 @@
       "Eng",
       "SL"
     ],
-    "adp": 67.0
+    "adp": null
   },
   {
     "player_id": 33,
@@ -633,7 +641,7 @@
       "Eng",
       "SL"
     ],
-    "adp": 68.0
+    "adp": null
   },
   {
     "player_id": 96,
@@ -643,7 +651,7 @@
       "D Inf",
       "O Hvy"
     ],
-    "adp": 69.0
+    "adp": null
   },
   {
     "player_id": 50,
@@ -652,7 +660,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 70.0
+    "adp": null
   },
   {
     "player_id": 63,
@@ -660,7 +668,7 @@
     "roles": [
       "SL"
     ],
-    "adp": 71.0
+    "adp": null
   },
   {
     "player_id": 66,
@@ -670,7 +678,7 @@
       "D Inf",
       "O Hvy"
     ],
-    "adp": 72.0
+    "adp": null
   },
   {
     "player_id": 93,
@@ -680,7 +688,7 @@
       "D Inf",
       "O Hvy"
     ],
-    "adp": 73.0
+    "adp": null
   },
   {
     "player_id": 34,
@@ -689,7 +697,7 @@
       "O Inf",
       "D Inf"
     ],
-    "adp": 74.0
+    "adp": null
   },
   {
     "player_id": 70,
@@ -699,7 +707,7 @@
       "D Hvy",
       "Med"
     ],
-    "adp": 75.0
+    "adp": null
   },
   {
     "player_id": 97,
@@ -707,7 +715,7 @@
     "roles": [
       "O Hvy"
     ],
-    "adp": 76.0
+    "adp": null
   },
   {
     "player_id": 1,
@@ -1013,14 +1021,6 @@
     "roles": [
       "O Inf",
       "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 102,
-    "name": "Verb",
-    "roles": [
-      "Eng"
     ],
     "adp": null
   },

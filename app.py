@@ -121,9 +121,19 @@ def get_draft_with_details(draft_key):
 def get_undrafted_players(draft_picks):
     """Get list of players not yet drafted in the current draft"""
     players = load_data(PLAYERS_FILE)
-    drafted_player_ids = [pick.get('player_id') for pick in draft_picks]
+    teams = load_data(TEAMS_FILE)
     
-    undrafted_players = [player for player in players if player['player_id'] not in drafted_player_ids]
+    # Get IDs of players who are captains or co-captains
+    captain_ids = [team.get('captain') for team in teams]
+    co_captain_ids = []
+    for team in teams:
+        co_captain_ids.extend(team.get('co_captain', []))
+    
+    # All unavailable player IDs (captains, co-captains, and already drafted players)
+    unavailable_ids = captain_ids + co_captain_ids + [pick.get('player_id') for pick in draft_picks]
+    
+    # Filter out unavailable players
+    undrafted_players = [player for player in players if player['player_id'] not in unavailable_ids]
     
     # Sort by ADP (null values at the end)
     undrafted_players.sort(key=lambda x: (x['adp'] is None, x['adp'] or float('inf'), x['name']))
@@ -165,11 +175,24 @@ def home():
         drafts=drafts
     )
 
-# API route to get players
+# API route to get all players
 @app.route('/players', methods=['GET'])
 def get_players():
     players = load_data(PLAYERS_FILE)
     return jsonify(players)
+
+# API route to get undrafted players (excluding captains and co-captains)
+@app.route('/undrafted_players/<draft_key>', methods=['GET'])
+def get_available_players(draft_key):
+    drafts = load_data(DRAFTS_FILE)
+    draft = next((d for d in drafts if d.get('draft_key') == draft_key), None)
+    
+    picks = []
+    if draft:
+        picks = draft.get('picks', [])
+    
+    undrafted_players = get_undrafted_players(picks)
+    return jsonify(undrafted_players)
 
 # API route to get teams
 @app.route('/teams', methods=['GET'])

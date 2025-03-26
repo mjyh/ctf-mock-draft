@@ -166,7 +166,7 @@
                     {% for player in players %}
                     <tr>
                         <td>
-                            {{ player.name }}
+                            {{ player.name|e }}
                             {% for role in player.roles %}
                             <span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>
                             {% endfor %}
