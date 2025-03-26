@@ -2,100 +2,201 @@
 
 ## 1. Background
 
-This project is for creating a mock-draft website for an online Capture the Flag (CTF) league (specifically “Infantry Online CTF”). Each team typically drafts 15–19 players, with only 10 players active in a match. Each player can handle certain roles (Offense Infantry, Defense Infantry, Medic, Engineer, etc.).
+This project is for creating a snake draft website for an online Capture the Flag (CTF) league (specifically “Infantry Online CTF”). Players have certain roles, teams have captains and co-captains, and the draft format is a snake order. We’re using simple HTML/CSS/JS for the front end and Flask + JSON for the backend.
 
-We want a simple web app where:
-- Users can log in, select the CTF league (CTFDL Season 4).
-- They can view a list of players (with roles) and build a mock draft.
-- After submitting, each draft is stored and contributes to average draft positions (ADP) of players.
-- The available player list is dynamically sorted by ADP for future drafts.
-- Users can revisit their draft (via a key generated for them) to edit or resubmit.
-- An admin user can delete or moderate drafts.
-
-The technology focus is minimal overhead, likely **Flask** (Python) or another lightweight approach, storing data either in JSON files or a simple SQLite database. We plan to host it on a service like PythonAnywhere or Render.
-
----
+### Main Features
+- Users can **create** a new mock draft by providing a unique name. They receive a **draft key** to edit it later.
+- Users can **edit** an existing draft by entering their draft key.
+- Users can **view** any existing draft (read-only).
+- The **home page** displays a list of drafts, current ADPs for all players, and links to create or edit a draft.
 
 ## 2. Requirements
 
-1. **User Accounts & Authentication**  
-   - Ability to **sign up** (username/password) and **log in**.  
-   - Maintain user sessions or tokens.  
+1. **Snake Draft**:
+   - We have multiple teams; in round 1 (odd), teams pick in ascending order of pick_order.
+   - In round 2 (even), the order is reversed.
+   - The front end calculates which team picks next based on the number of picks already made.
 
-2. **Mock Draft Creation**  
-   - Users choose the current league (e.g., “CTFDL Season 4”).  
-   - A list of **all players** (name, possible roles) is displayed.  
-   - Users draft ~15–19 players (with only 10 as “starters” in a real game, but that detail can be noted).  
-   - After picking players, they **submit** the draft.
+2. **Team Information**:
+   - Stored in `teams.json` with fields:
+     - `team_id`
+     - `team_name`
+     - `captain` (player ID)
+     - `co_captain` (array of player IDs)
+     - `pick_order` (1 for first, 2 for second, etc.)
+   - On the draft page’s left pane, we show each team, its captain, co-captains, and the picks made so far.
+   - Player names displayed on this pane include their **roles**.
 
-3. **Data Storage**  
-   - Store player info in a file or table (e.g. `players.json` or a `players` table).  
-   - Store drafts (`drafts.json` or a `drafts` table).  
-   - Store user accounts (`users.json` or a `users` table).  
-   - Optionally store team captains, co-captains, etc.  
+3. **Players & Roles**:
+   - `players.json` holds all players (including captains/co-captains).
+   - Roles: O Inf, SG D Inf, CAW D Inf, O Hvy, D Hvy, SL, Med, Eng, Foot JT, Vehicle JT, Infiltrator.
+   - Each role is displayed with a color-coded tag in the front end.
+   - Each player object also includes an `adp` field, which may be `null` if not yet calculated.
 
-4. **ADP (Average Draft Position)**  
-   - Each time a user loads the list of players, they are sorted by ADP.  
-   - ADP = average pick index across all submitted drafts (ex. if a player is picked 1st, 5th, and 3rd in three different drafts, their ADP is (1+5+3)/3 = 3.0).  
-   - If no data, sort players alphabetically or by some default method.
+4. **Mock Drafts**:
+   - Stored in drafts.json. Each has:
+     - draft_key (random string or UUID)
+     - user_name (unique identifier)
+     - picks (array of { team_id, player_id } in draft order)
+     - submitted_at (timestamp)
 
-5. **Editing Drafts**  
-   - Users can come back (via login or a unique “draft key”) to modify picks.  
-   - Only the latest submitted version from a user should count for ADP, or we keep all drafts—this can be decided in the implementation.
-
-6. **Admin Controls**  
-   - An admin account can view all drafts and **delete** or **remove** them if needed.
-
-7. **Deployment**  
-   - Low-bloat environment, such as Flask on PythonAnywhere or Render.  
-   - Must handle basic concurrency (multiple users drafting).  
-   - JSON-based or SQLite-based storage should be enough for a small user base.
+5. **ADP Calculation**:
+   - After each “Submit Draft,” we recalc every player’s average draft position from all stored drafts.
+   - GET /players can return merged data with adp for each player.
 
 ---
 
-## 3. Proposed Design
+## 3. Data Storage (JSON Files)
 
-### 3.1 Overall Architecture
+1. **players.json** (example):
+```
+   [
+     {
+       "player_id": 1,
+       "name": "CaptainJohn",
+       "roles": ["O Inf"]
+     },
+     {
+       "player_id": 2,
+       "name": "MedicMary",
+       "roles": ["Med"]
+     }
+   ]
+```
+2. **teams.json** (example):
+```
+   [
+     {
+       "team_id": 101,
+       "team_name": "Team Alpha",
+       "captain": 1,
+       "co_captain": 4,
+       "pick_order": 1
+     },
+     {
+       "team_id": 102,
+       "team_name": "Team Bravo",
+       "captain": 2,
+       "co_captain": 5,
+       "pick_order": 2
+     }
+   ]
+```
+3. **drafts.json** (example):
+```
+   [
+     {
+       "draft_key": "abcd-1234",
+       "user_name": "DraftUser",
+       "picks": [
+         { "team_id": 101, "player_id": 7 },
+         { "team_id": 102, "player_id": 3 }
+       ],
+       "submitted_at": "2025-03-25T12:34:56Z"
+     }
+   ]
+```
+---
 
-- **Front End**:  
-  - Minimal HTML/CSS/JS or a small framework like Vue/React (optional).  
-  - Displays pages: *Login*, *Sign Up*, *Draft*, *Admin Panel*.  
-  - Interacts with backend via REST endpoints (JSON).
+## 4. Front-End Pages
 
-- **Backend (Flask)**:  
-  - Routes for sign up, log in, creating/fetching drafts, listing players, admin actions.  
-  - Data stored in JSON files or a small SQLite database.  
-  - Logic for ADP computation triggered on each read or after each draft submission.
+### 4.1 Home Page
+- Displays ADPs: A table or list of players sorted by ADP (or name if no ADP).
+- Lists existing drafts: The user can select one to view (read-only).
+- Create a Draft: Form to enter user_name → calls POST /drafts/new. If successful, returns draft_key.
+- Edit a Draft: Form to enter a draft key, proceeds to the Draft Page if valid.
 
-- **Data Store**:  
-  - **JSON Option**: `players.json`, `users.json`, `drafts.json`.  
-  - **SQLite Option**: tables `players`, `users`, `drafts`, with a simple schema.
+### 4.2 Draft Page
+- Shows the draft key prominently with the message “KEEP THIS KEY TO EDIT LATER.”
+- **Left Pane**:
+  - Lists all teams in ascending `pick_order`.
+  - Each team shows name, captain, co-captains, and picks so far.
+  - Each player listed includes their **roles**.
+- **Right Pane**:
+  - Undrafted players, sorted by ADP or name.
+  - Each shows name and **roles**.
+  - Each has a button “Draft” to add that player as the next pick.
+  - Single “Remove Last Pick” button to undo the most recent pick.
+- “Submit Draft” button updates the server with the entire picks array.
 
-### 3.2 Endpoint Sketch (RESTful)
+### 4.3 Read-Only View Draft
+- Similar layout as the Draft Page, but no buttons to change picks.
+- The left pane shows the teams and all picks.
+- The right pane can be disabled or just omitted.
 
-1. **Authentication**  
-   - `POST /signup`: Create new user (store hashed password).  
-   - `POST /login`: Validate credentials, set session/cookie or return a token.
+---
 
-2. **Players**  
-   - `GET /players`: Returns all players sorted by ADP. (Backend calculates ADP on the fly or has a cached value.)
+## 5. Draft Flow
 
-3. **Drafts**  
-   - `GET /drafts`: Returns the current user’s existing drafts.  
-   - `POST /drafts`: Creates a new draft. Body includes `league`, `picks` (list of player IDs).  
-   - `PUT /drafts/<draft_id>`: Edits an existing draft.  
-   - `DELETE /drafts/<draft_id>`: Owner or admin can delete a draft.
+1. **Create**:
+   - User enters user_name → POST /drafts/new returns a draft_key.
+   - Goes to Draft Page, with a notice “KEEP THIS KEY.”
 
-4. **Admin**  
-   - `GET /admin/drafts`: Return all drafts (admin only).  
-   - `DELETE /admin/drafts/<draft_id>`: Delete any user’s draft (admin only).
+2. **Pick**:
+   - Front end determines which team is up (snake logic) based on the length of picks.
+   - User clicks “Draft” on a player → appended to the local picks array.
 
-### 3.3 Data Model (JSON Example)
+3. **Undo**:
+   - User clicks “Remove Last Pick” → removes the last item in picks.
 
-- **`players.json`**:
-  ```json
-  [
-    { "player_id": 1, "name": "PlayerA", "roles": ["O Inf", "Medic"] },
-    { "player_id": 2, "name": "PlayerB", "roles": ["D Inf", "Engineer"] },
-    ...
-  ]
+4. **Submit**:
+   - User clicks “Submit Draft” → PUT /drafts/<draft_key> with the picks array, user_name.
+   - Server saves to drafts.json, recalculates ADP.
+
+---
+
+## 6. ADP Calculation
+
+- After PUT /drafts/<draft_key>, the server:
+  - Reads all drafts in drafts.json.
+  - For each draft’s picks, each index i is position i+1.
+  - Computes each player’s average pick across all drafts.
+  - Caches or stores this in memory so GET /players returns updated adp.
+
+---
+
+## 7. Color-Coded Roles
+
+- O Inf → lighter red  
+- SG D Inf, CAW D Inf → darker red  
+- O Hvy → lighter blue  
+- D Hvy → darker blue  
+- Foot JT → light gray  
+- Vehicle JT → dark gray  
+- Med → yellow  
+- Eng → orange-brown  
+- Squad Leader → light green  
+- Infiltrator → **purple**
+
+---
+
+## 8. Endpoints Summary
+
+1. **POST /drafts/new**  
+   Body: {"user_name": "..."}  
+   Returns: {"draft_key": "..."} plus a message.  
+   Enforce user_name uniqueness.
+
+2. **PUT /drafts/<draft_key>**  
+   Overwrites the picks for that draft, updates submitted_at, recalculates ADP.
+
+3. **GET /drafts**  
+   Returns a list of summaries (draft_key, user_name, picks_count, etc.).
+
+4. **GET /drafts/<draft_key>**  
+   Returns the full draft object for that key (if the user wants to reload picks).
+
+5. **GET /players**  
+   Returns all players, each with an adp field if available.
+
+6. **GET /teams**  
+   Returns teams.json data (team_id, name, captain, co_captain, pick_order).
+
+---
+
+## 9. Summary
+
+- **Home Page**: Show current ADPs, list drafts, let user create/edit drafts.
+- **Draft Page**: Show the draft key, teams with picks on the left, undrafted players on the right, plus submit/undo/delete controls.
+- **View Draft**: Read-only mode for an existing draft.
+- **Server**: JSON-based, a few simple endpoints for managing drafts and computing ADPs.
