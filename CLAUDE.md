@@ -3,6 +3,11 @@
 ## Build & Run Commands
 - Run the application: `python app.py`
 - Run development server with debug: `flask run --debug`
+
+## Important Notes
+- NEVER run the server after making code changes (don't run python app.py or flask run)
+
+## Setup
 - Install dependencies: `pip install -r requirements.txt`
 - Create virtual environment: `python -m venv venv`
 - Activate virtual environment: 

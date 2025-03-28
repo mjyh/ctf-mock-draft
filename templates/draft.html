@@ -22,12 +22,42 @@
             margin-bottom: 20px;
         }
 
-        .draft-key-container {
-            background-color: #ff6666;
+        .banners-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .banner {
             padding: 10px;
             border-radius: 8px;
-            margin-bottom: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .draft-key-banner {
+            background-color: #ff6666;
+            flex: 2;
+        }
+
+        .remove-banner {
+            background-color: #e74c3c;
+            flex: 2;
+        }
+
+        .submit-banner {
+            background-color: #2ecc71;
+            flex: 2;
+        }
+
+        .round-info-banner {
+            background-color: #4e91fc;
+            flex: 4;
+            font-weight: bold;
+            font-size: 16px;
         }
 
         .draft-key {
@@ -35,10 +65,24 @@
             font-size: 18px;
             font-weight: bold;
         }
+        
+        .banner-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
 
         .container {
             display: flex;
-            gap: 20px;
+            gap: 15px;
+            width: 130%;
+            max-width: 1800px;
+            margin: 0 auto;
         }
 
         .left-pane, .right-pane {
@@ -46,63 +90,69 @@
             background-color: #2a2a40;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            overflow: auto;
         }
 
         .left-pane {
-            flex: 2;
-            min-width: 600px;
+            flex: 5;
+            min-width: 900px;
             max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .right-pane {
             flex: 1;
-            min-width: 350px;
-            max-height: calc(100vh - 200px);
-            overflow-y: auto;
+            min-width: 250px;
+            max-width: 350px;
+            overflow-y: visible;
         }
         
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            width: 100%;
+            overflow-x: auto;
+            justify-content: space-between;
         }
 
         .team-card {
             background-color: #333350;
             border-radius: 6px;
             padding: 10px;
-            height: 100%;
+            min-width: 180px;
+            max-width: 200px;
+            flex: 0 0 auto;
             display: flex;
             flex-direction: column;
         }
 
         .team-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .team-leadership {
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            font-size: 13px;
         }
 
         .team-picks {
             margin-top: 10px;
             flex-grow: 1;
-            overflow-y: auto;
-            max-height: 250px;
         }
 
         .pick-item {
             display: flex;
             align-items: center;
-            padding: 5px;
+            padding: 3px;
             border-bottom: 1px solid #444;
+            font-size: 12px;
         }
 
         .pick-number {
-            flex: 0 0 30px;
+            flex: 0 0 20px;
             font-weight: bold;
         }
 
@@ -110,14 +160,7 @@
             flex: 1;
         }
 
-        .current-pick {
-            background-color: #4e91fc;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
+        /* Styles for current pick info now in the banner */
 
         .button {
             background-color: #4e91fc;
@@ -247,9 +290,20 @@
         <h1>Draft for: {{ draft.user_name }}</h1>
     </div>
     
-    <div class="draft-key-container">
-        <p>KEEP THIS KEY TO EDIT YOUR DRAFT LATER</p>
-        <div class="draft-key">{{ draft.draft_key }}</div>
+    <div class="banners-container">
+        <div class="banner draft-key-banner">
+            <p>KEEP THIS KEY TO EDIT YOUR DRAFT LATER</p>
+            <div class="draft-key">{{ draft.draft_key }}</div>
+        </div>
+        <div class="banner remove-banner">
+            <button id="removeLastBtn" class="banner-button remove">Remove Last Pick</button>
+        </div>
+        <div class="banner submit-banner">
+            <button id="submitDraftBtn" class="banner-button submit">Submit Draft</button>
+        </div>
+        <div class="banner round-info-banner" id="current-pick">
+            <!-- Current pick info will be displayed here -->
+        </div>
     </div>
     
     <div class="container">
@@ -259,17 +313,17 @@
             <div class="team-grid">
                 {% for team in teams|sort(attribute='pick_order') %}
                 <div class="team-card" id="team-{{ team.team_id }}">
-                    <div class="team-name">{{ team.team_name }}</div>
+                    <div class="team-name">{{ team.pick_order }}. {{ team.team_name }}</div>
                     
                     <div class="team-leadership">
-                        <strong>Captain:</strong> {{ team.captain_info.name|e }} {% for role in team.captain_info.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
+                        <strong>Captain:</strong> {{ team.captain_info.name|e }}
                     </div>
                     
                     {% if team.co_captain_info %}
                     <div class="team-leadership">
                         <strong>Co-Captain:</strong>
                         {% for co_captain in team.co_captain_info %}
-                        {{ co_captain.name|e }} {% for role in co_captain.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
+                        {{ co_captain.name|e }}{% if not loop.last %}, {% endif %}
                         {% endfor %}
                     </div>
                     {% endif %}
@@ -286,20 +340,11 @@
         </div>
         
         <div class="right-pane">
-            <div id="current-pick" class="current-pick">
-                <!-- Current pick info will be displayed here -->
-            </div>
-            
             <h2>Undrafted Players</h2>
             <input type="text" id="playerSearch" class="search-bar" placeholder="Search players...">
             
-            <div id="undraftedPlayers">
+            <div id="undraftedPlayers" style="max-height: calc(100vh - 350px); overflow-y: auto;">
                 <!-- Undrafted players will be displayed here -->
-            </div>
-            
-            <div class="actions">
-                <button id="removeLastBtn" class="button remove">Remove Last Pick</button>
-                <button id="submitDraftBtn" class="button submit">Submit Draft</button>
             </div>
         </div>
     </div>
@@ -453,15 +498,7 @@
                     const playerNameElem = document.createElement('div');
                     playerNameElem.className = 'player-name';
                     // For textContent, we don't need to escape HTML as it doesn't interpret HTML
-                    playerNameElem.textContent = player.name + ' ';
-                    
-                    // Add roles directly to the player name element
-                    player.roles.forEach(role => {
-                        const tag = document.createElement('span');
-                        tag.className = 'role-tag ' + role.toLowerCase().replace(' ', '-');
-                        tag.textContent = role;
-                        playerNameElem.appendChild(tag);
-                    });
+                    playerNameElem.textContent = player.name;
                     
                     pickItem.appendChild(pickNumber);
                     pickItem.appendChild(playerNameElem);
@@ -501,7 +538,12 @@
             const currentPickElem = document.getElementById('current-pick');
             
             if (nextTeam) {
-                currentPickElem.textContent = `Next Pick: ${nextTeam.team_name}`;
+                const numTeams = allTeams.length;
+                const currentPickNumber = draftPicks.length + 1;
+                const roundNumber = Math.floor((currentPickNumber - 1) / numTeams) + 1;
+                const pickInRound = ((currentPickNumber - 1) % numTeams) + 1;
+                
+                currentPickElem.textContent = `Round ${roundNumber}, Pick ${pickInRound}: ${nextTeam.team_name}`;
             } else {
                 currentPickElem.textContent = 'Draft complete';
             }
