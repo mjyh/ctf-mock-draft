@@ -177,15 +177,16 @@
             <table id="playerTable">
                 <thead>
                     <tr>
-                        <th>Player</th>
+                        <th style="min-width: 150px;">Player</th>
+                        <th>Role</th>
                         <th>ADP</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for player in players %}
                     <tr>
+                        <td>{{ player.name|e }}</td>
                         <td>
-                            {{ player.name|e }}
                             {% for role in player.roles %}
                             <span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>
                             {% endfor %}
