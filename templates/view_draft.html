@@ -10,7 +10,7 @@
             color: #eeeeee;
             font-family: sans-serif;
             padding: 20px;
-            max-width: 1200px;
+            max-width: 1800px;
             margin: 0 auto;
         }
 
@@ -25,29 +25,38 @@
         .container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 10px;
+            max-height: calc(100vh - 120px);
         }
 
         .section {
             background-color: #2a2a2a;
             padding: 20px;
+            padding-bottom: 10px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .team-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 12px;
+            width: 100%;
+            overflow-x: hidden;
+            justify-content: space-between;
         }
 
         .team-card {
             background-color: #333333;
             border-radius: 6px;
             padding: 15px;
-            height: 100%;
+            height: 800px;
             display: flex;
             flex-direction: column;
+            min-width: 180px;
+            width: calc(16.66% - 10px);
+            flex: 1 1 0;
         }
 
         .team-name {
@@ -59,13 +68,14 @@
 
         .team-leadership {
             margin-bottom: 8px;
+            font-size: 14px;
         }
 
         .team-picks {
-            margin-top: 15px;
+            margin-top: 10px;
             flex-grow: 1;
             overflow-y: auto;
-            max-height: 250px;
+            max-height: 700px;
         }
 
         .pick-item {
@@ -73,23 +83,33 @@
             align-items: center;
             padding: 5px;
             border-bottom: 1px solid #444;
+            margin-bottom: 5px;
         }
 
         .pick-number {
             flex: 0 0 30px;
             font-weight: bold;
+            font-size: 14px;
         }
 
         .player-name {
             flex: 1;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+        
+        .player-roles {
+            min-width: 50%;
+            text-align: right;
         }
 
         .role-tag {
             display: inline-block;
             padding: 1px 3px;
             border-radius: 2px;
-            margin-right: 4px;
-            margin-bottom: 2px;
+            margin-right: 2px;
+            margin-bottom: 1px;
             font-size: 10px;
             color: #fff;
             background-color: rgba(100, 100, 100, 0.5);
@@ -166,15 +186,32 @@
                     <div class="team-name">{{ team.team_name }}</div>
                     
                     <div class="team-leadership">
-                        <strong>Captain:</strong> {{ team.captain_info.name|e }} {% for role in team.captain_info.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><strong>Captain:</strong> {{ team.captain_info.name|e }}</div>
+                            <div class="player-roles">
+                                {% for role in team.captain_info.roles %}
+                                <span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
                     
                     {% if team.co_captain_info %}
                     <div class="team-leadership">
-                        <strong>Co-Captain:</strong>
-                        {% for co_captain in team.co_captain_info %}
-                        {{ co_captain.name|e }} {% for role in co_captain.roles %}<span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>{% endfor %}
-                        {% endfor %}
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><strong>Co-Captain:</strong>
+                            {% for co_captain in team.co_captain_info %}
+                            {{ co_captain.name|e }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                            </div>
+                            <div class="player-roles">
+                                {% for co_captain in team.co_captain_info %}
+                                    {% for role in co_captain.roles %}
+                                    <span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
                     {% endif %}
                     
@@ -186,10 +223,12 @@
                                 <div class="pick-item">
                                     <div class="pick-number">{{ loop.index }}.</div>
                                     <div class="player-name">
-                                        {{ pick.player_info.name|e }}
-                                        {% for role in pick.player_info.roles %}
-                                        <span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>
-                                        {% endfor %}
+                                        <span>{{ pick.player_info.name|e }}</span>
+                                        <div class="player-roles">
+                                            {% for role in pick.player_info.roles %}
+                                            <span class="role-tag {{ role.lower().replace(' ', '-') }}">{{ role }}</span>
+                                            {% endfor %}
+                                        </div>
                                     </div>
                                 </div>
                                 {% endif %}
@@ -200,7 +239,6 @@
                 {% endfor %}
             </div>
             
-            <a href="/" class="button">Back to Drafts</a>
         </div>
     </div>
 </body>
