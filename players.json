@@ -1,309 +1,11 @@
 [
   {
-    "player_id": 55,
-    "name": "ANTTTTT",
+    "player_id": 1,
+    "name": "Sov",
     "roles": [
-      "O Inf",
-      "D Inf",
-      "D Hvy"
-    ],
-    "adp": 2.0
-  },
-  {
-    "player_id": 46,
-    "name": "Abbath",
-    "roles": [
-      "Med",
-      "Eng",
-      "SL"
-    ],
-    "adp": 3.0
-  },
-  {
-    "player_id": 73,
-    "name": "1992",
-    "roles": [
-      "D Inf"
-    ],
-    "adp": 3.0
-  },
-  {
-    "player_id": 60,
-    "name": "Agh",
-    "roles": [
-      "O Inf",
-      "D Inf",
-      "O Hvy"
-    ],
-    "adp": 4.0
-  },
-  {
-    "player_id": 102,
-    "name": "Verb",
-    "roles": [
-      "Eng"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 45,
-    "name": "anjro",
-    "roles": [
+      "O Hvy",
       "D Inf",
       "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 8,
-    "name": "baal",
-    "roles": [
-      "D Inf",
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 28,
-    "name": "Breakdance",
-    "roles": [
-      "Eng",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 15,
-    "name": "bt",
-    "roles": [
-      "Eng",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 19,
-    "name": "Amok",
-    "roles": [
-      "Med",
-      "SL",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 26,
-    "name": "Axidus",
-    "roles": [
-      "O Hvy",
-      "O Inf",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 108,
-    "name": "billlaaaay",
-    "roles": [
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 12,
-    "name": "bonds",
-    "roles": [
-      "Med",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 84,
-    "name": "Bowen",
-    "roles": [
-      "O Hvy",
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 47,
-    "name": "Bozza",
-    "roles": [
-      "O Hvy",
-      "D Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 13,
-    "name": "Cara Tank",
-    "roles": [
-      "D Inf",
-      "O Inf",
-      "Med"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 109,
-    "name": "CasoPrime",
-    "roles": [
-      "JT",
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 51,
-    "name": "Chev Rising",
-    "roles": [
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 27,
-    "name": "Captain Ax",
-    "roles": [
-      "SL",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 100,
-    "name": "Cadiz",
-    "roles": [
-      "D Inf",
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 89,
-    "name": "Chuck Schuldinger",
-    "roles": [
-      "JT"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 85,
-    "name": "C0rtana",
-    "roles": [
-      "Infil",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 14,
-    "name": "Chuckie",
-    "roles": [
-      "JT",
-      "O Hvy",
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 36,
-    "name": "Colossal",
-    "roles": [
-      "O Hvy",
-      "D Hvy",
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 107,
-    "name": "Decker",
-    "roles": [
-      "Eng",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 62,
-    "name": "Demon",
-    "roles": [
-      "D Inf",
-      "D Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 92,
-    "name": "DemonSeed",
-    "roles": [
-      "O Hvy",
-      "D Hvy",
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 18,
-    "name": "Dilatory",
-    "roles": [
-      "Med",
-      "Eng",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 94,
-    "name": "doc",
-    "roles": [
-      "D Hvy",
-      "Med",
-      "Eng"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 99,
-    "name": "Doris Burke",
-    "roles": [
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 40,
-    "name": "dp",
-    "roles": [
-      "O Inf",
-      "D Inf",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 68,
-    "name": "England",
-    "roles": [
-      "O Hvy",
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 64,
-    "name": "Epyon",
-    "roles": [
-      "O Inf",
-      "D Inf"
     ],
     "adp": null
   },
@@ -318,123 +20,10 @@
     "adp": null
   },
   {
-    "player_id": 10,
-    "name": "Genocide",
-    "roles": [
-      "D Inf",
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 61,
-    "name": "Ghost Bomber",
-    "roles": [
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 30,
-    "name": "Got Tsolvy?",
-    "roles": [
-      "Med",
-      "SL",
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 24,
-    "name": "Greed",
-    "roles": [
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 110,
-    "name": "GunGirl",
-    "roles": [
-      "Med"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 101,
-    "name": "Half-Cut",
-    "roles": [
-      "O Hvy",
-      "D Hvy",
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 67,
-    "name": "hed",
-    "roles": [
-      "O Hvy",
-      "JT",
-      "D Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 98,
-    "name": "igid",
-    "roles": [
-      "Med",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 42,
-    "name": "Infinite",
-    "roles": [
-      "SL",
-      "Infil",
-      "Med"
-    ],
-    "adp": null
-  },
-  {
     "player_id": 3,
     "name": "IRON",
     "roles": [
       "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 39,
-    "name": "J",
-    "roles": [
-      "O Hvy",
-      "JT",
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 9,
-    "name": "JACKIE",
-    "roles": [
-      "O Inf",
-      "O Hvy",
-      "Eng"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 35,
-    "name": "Jaguar",
-    "roles": [
-      "O Inf",
-      "SL",
-      "D Inf"
     ],
     "adp": null
   },
@@ -444,286 +33,6 @@
     "roles": [
       "O Inf",
       "O Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 49,
-    "name": "Jim",
-    "roles": [
-      "O Inf",
-      "SL",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 53,
-    "name": "juetnihilia",
-    "roles": [
-      "D Inf",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 37,
-    "name": "Katana",
-    "roles": [
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 111,
-    "name": "Kel",
-    "roles": [
-      "O Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 65,
-    "name": "keniver",
-    "roles": [
-      "D Hvy",
-      "O Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 16,
-    "name": "Keyser",
-    "roles": [
-      "O Inf",
-      "O Hvy",
-      "D Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 69,
-    "name": "kylauf",
-    "roles": [
-      "O Inf",
-      "O Hvy",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 95,
-    "name": "leong",
-    "roles": [
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 112,
-    "name": "Ljenks",
-    "roles": [
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 86,
-    "name": "Loaf Pincher",
-    "roles": [
-      "Med"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 88,
-    "name": "LoneZodiac",
-    "roles": [
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 87,
-    "name": "Maniac",
-    "roles": [
-      "O Inf",
-      "O Hvy",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 22,
-    "name": "Marduk",
-    "roles": [
-      "O Inf",
-      "O Hvy",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 80,
-    "name": "Marqui2156",
-    "roles": [
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 77,
-    "name": "Mechanic~",
-    "roles": [
-      "D Inf",
-      "O Inf",
-      "D Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 38,
-    "name": "Meep",
-    "roles": [
-      "O Inf",
-      "Med",
-      "Eng"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 58,
-    "name": "Mercy",
-    "roles": [
-      "O Inf",
-      "O Hvy",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 103,
-    "name": "metal",
-    "roles": [
-      "D Inf",
-      "O Inf",
-      "Med"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 91,
-    "name": "mi",
-    "roles": [
-      "O Inf",
-      "JT",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 105,
-    "name": "Mixm",
-    "roles": [
-      "Eng",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 33,
-    "name": "MuguN",
-    "roles": [
-      "D Inf",
-      "Eng",
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 96,
-    "name": "MysticGohan~",
-    "roles": [
-      "O Inf",
-      "D Inf",
-      "O Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 50,
-    "name": "nos",
-    "roles": [
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 63,
-    "name": "Not By Choice",
-    "roles": [
-      "SL"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 66,
-    "name": "NY-MikeJones",
-    "roles": [
-      "O Inf",
-      "D Inf",
-      "O Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 93,
-    "name": "Oor",
-    "roles": [
-      "O Inf",
-      "D Inf",
-      "O Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 34,
-    "name": "Penguin",
-    "roles": [
-      "O Inf",
-      "D Inf"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 70,
-    "name": "Phony",
-    "roles": [
-      "O Inf",
-      "D Hvy",
-      "Med"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 97,
-    "name": "Pistor",
-    "roles": [
-      "O Hvy"
-    ],
-    "adp": null
-  },
-  {
-    "player_id": 1,
-    "name": "Sov",
-    "roles": [
-      "O Hvy",
-      "D Inf",
-      "O Inf"
     ],
     "adp": null
   },
@@ -756,6 +65,34 @@
     "adp": null
   },
   {
+    "player_id": 8,
+    "name": "baal",
+    "roles": [
+      "D Inf",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 9,
+    "name": "JACKIE",
+    "roles": [
+      "O Inf",
+      "O Hvy",
+      "Eng"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 10,
+    "name": "Genocide",
+    "roles": [
+      "D Inf",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 11,
     "name": "Zmn",
     "roles": [
@@ -766,11 +103,79 @@
     "adp": null
   },
   {
+    "player_id": 12,
+    "name": "bonds",
+    "roles": [
+      "Med",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 13,
+    "name": "Cara Tank",
+    "roles": [
+      "D Inf",
+      "O Inf",
+      "Med"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 14,
+    "name": "Chuckie",
+    "roles": [
+      "JT",
+      "O Hvy",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 15,
+    "name": "bt",
+    "roles": [
+      "Eng",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 16,
+    "name": "Keyser",
+    "roles": [
+      "O Inf",
+      "O Hvy",
+      "D Hvy"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 17,
     "name": "Worth",
     "roles": [
       "D Inf",
       "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 18,
+    "name": "Dilatory",
+    "roles": [
+      "Med",
+      "Eng",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 19,
+    "name": "Amok",
+    "roles": [
+      "Med",
+      "SL",
+      "D Inf"
     ],
     "adp": null
   },
@@ -795,11 +200,29 @@
     "adp": null
   },
   {
+    "player_id": 22,
+    "name": "Marduk",
+    "roles": [
+      "O Inf",
+      "O Hvy",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 23,
     "name": "Waylander",
     "roles": [
       "Med",
       "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 24,
+    "name": "Greed",
+    "roles": [
       "D Inf"
     ],
     "adp": null
@@ -813,12 +236,50 @@
     "adp": null
   },
   {
+    "player_id": 26,
+    "name": "Axidus",
+    "roles": [
+      "O Hvy",
+      "O Inf",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 27,
+    "name": "Captain Ax",
+    "roles": [
+      "SL",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 28,
+    "name": "Breakdance",
+    "roles": [
+      "Eng",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 29,
     "name": "Soup",
     "roles": [
       "D Inf",
       "Med",
       "D Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 30,
+    "name": "Got Tsolvy?",
+    "roles": [
+      "Med",
+      "SL",
+      "O Inf"
     ],
     "adp": null
   },
@@ -841,11 +302,98 @@
     "adp": null
   },
   {
+    "player_id": 33,
+    "name": "MuguN",
+    "roles": [
+      "D Inf",
+      "Eng",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 34,
+    "name": "Penguin",
+    "roles": [
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 35,
+    "name": "Jaguar",
+    "roles": [
+      "O Inf",
+      "SL",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 36,
+    "name": "Colossal",
+    "roles": [
+      "O Hvy",
+      "D Hvy",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 37,
+    "name": "Katana",
+    "roles": [
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 38,
+    "name": "Meep",
+    "roles": [
+      "O Inf",
+      "Med",
+      "Eng"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 39,
+    "name": "J",
+    "roles": [
+      "O Hvy",
+      "JT",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 40,
+    "name": "dp",
+    "roles": [
+      "O Inf",
+      "D Inf",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 41,
     "name": "Roman Reigns",
     "roles": [
       "O Inf",
       "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 42,
+    "name": "Infinite",
+    "roles": [
+      "SL",
+      "Infil",
+      "Med"
     ],
     "adp": null
   },
@@ -869,11 +417,67 @@
     "adp": null
   },
   {
+    "player_id": 45,
+    "name": "anjro",
+    "roles": [
+      "D Inf",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 46,
+    "name": "Abbath",
+    "roles": [
+      "Med",
+      "Eng",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 47,
+    "name": "Bozza",
+    "roles": [
+      "O Hvy",
+      "D Hvy"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 48,
     "name": "Power",
     "roles": [
       "D Inf",
       "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 49,
+    "name": "Jim",
+    "roles": [
+      "O Inf",
+      "SL",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 50,
+    "name": "nos",
+    "roles": [
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 51,
+    "name": "Chev Rising",
+    "roles": [
+      "O Inf",
+      "D Inf"
     ],
     "adp": null
   },
@@ -888,12 +492,31 @@
     "adp": null
   },
   {
+    "player_id": 53,
+    "name": "juetnihilia",
+    "roles": [
+      "D Inf",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 54,
     "name": "Rosary",
     "roles": [
       "Eng",
       "SL",
       "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 55,
+    "name": "ANTTTTT",
+    "roles": [
+      "O Inf",
+      "D Inf",
+      "D Hvy"
     ],
     "adp": null
   },
@@ -917,11 +540,125 @@
     "adp": null
   },
   {
+    "player_id": 58,
+    "name": "Mercy",
+    "roles": [
+      "O Inf",
+      "O Hvy",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 59,
     "name": "thegreatchompy",
     "roles": [
       "O Inf",
       "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 60,
+    "name": "Agh",
+    "roles": [
+      "O Inf",
+      "D Inf",
+      "O Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 61,
+    "name": "Ghost Bomber",
+    "roles": [
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 62,
+    "name": "Demon",
+    "roles": [
+      "D Inf",
+      "D Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 63,
+    "name": "Not By Choice",
+    "roles": [
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 64,
+    "name": "Epyon",
+    "roles": [
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 65,
+    "name": "keniver",
+    "roles": [
+      "D Hvy",
+      "O Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 66,
+    "name": "NY-MikeJones",
+    "roles": [
+      "O Inf",
+      "D Inf",
+      "O Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 67,
+    "name": "hed",
+    "roles": [
+      "O Hvy",
+      "JT",
+      "D Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 68,
+    "name": "England",
+    "roles": [
+      "O Hvy",
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 69,
+    "name": "kylauf",
+    "roles": [
+      "O Inf",
+      "O Hvy",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 70,
+    "name": "Phony",
+    "roles": [
+      "O Inf",
+      "D Hvy",
+      "Med"
     ],
     "adp": null
   },
@@ -941,6 +678,14 @@
     "roles": [
       "O Inf",
       "O Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 73,
+    "name": "1992",
+    "roles": [
+      "D Inf"
     ],
     "adp": null
   },
@@ -969,6 +714,16 @@
     "adp": null
   },
   {
+    "player_id": 77,
+    "name": "Mechanic~",
+    "roles": [
+      "D Inf",
+      "O Inf",
+      "D Hvy"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 78,
     "name": "Popular",
     "roles": [
@@ -983,6 +738,15 @@
       "D Inf",
       "O Inf",
       "O Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 80,
+    "name": "Marqui2156",
+    "roles": [
+      "O Inf",
+      "D Inf"
     ],
     "adp": null
   },
@@ -1016,11 +780,186 @@
     "adp": null
   },
   {
+    "player_id": 84,
+    "name": "Bowen",
+    "roles": [
+      "O Hvy",
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 85,
+    "name": "C0rtana",
+    "roles": [
+      "Infil",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 86,
+    "name": "Loaf Pincher",
+    "roles": [
+      "Med"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 87,
+    "name": "Maniac",
+    "roles": [
+      "O Inf",
+      "O Hvy",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 88,
+    "name": "LoneZodiac",
+    "roles": [
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 89,
+    "name": "Chuck Schuldinger",
+    "roles": [
+      "JT"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 90,
     "name": "Yami Kenichi",
     "roles": [
       "O Inf",
       "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 91,
+    "name": "mi",
+    "roles": [
+      "O Inf",
+      "JT",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 92,
+    "name": "DemonSeed",
+    "roles": [
+      "O Hvy",
+      "D Hvy",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 93,
+    "name": "Oor",
+    "roles": [
+      "O Inf",
+      "D Inf",
+      "O Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 94,
+    "name": "doc",
+    "roles": [
+      "D Hvy",
+      "Med",
+      "Eng"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 95,
+    "name": "leong",
+    "roles": [
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 96,
+    "name": "MysticGohan~",
+    "roles": [
+      "O Inf",
+      "D Inf",
+      "O Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 97,
+    "name": "Pistor",
+    "roles": [
+      "O Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 98,
+    "name": "igid",
+    "roles": [
+      "Med",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 99,
+    "name": "Doris Burke",
+    "roles": [
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 100,
+    "name": "Cadiz",
+    "roles": [
+      "D Inf",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 101,
+    "name": "Half-Cut",
+    "roles": [
+      "O Hvy",
+      "D Hvy",
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 102,
+    "name": "Verb",
+    "roles": [
+      "Eng"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 103,
+    "name": "metal",
+    "roles": [
+      "D Inf",
+      "O Inf",
+      "Med"
     ],
     "adp": null
   },
@@ -1034,11 +973,72 @@
     "adp": null
   },
   {
+    "player_id": 105,
+    "name": "Mixm",
+    "roles": [
+      "Eng",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
     "player_id": 106,
     "name": "posty",
     "roles": [
       "Med",
       "O Hvy"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 107,
+    "name": "Decker",
+    "roles": [
+      "Eng",
+      "SL"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 108,
+    "name": "billlaaaay",
+    "roles": [
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 109,
+    "name": "CasoPrime",
+    "roles": [
+      "JT",
+      "O Inf",
+      "D Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 110,
+    "name": "GunGirl",
+    "roles": [
+      "Med"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 111,
+    "name": "Kel",
+    "roles": [
+      "O Inf"
+    ],
+    "adp": null
+  },
+  {
+    "player_id": 112,
+    "name": "Ljenks",
+    "roles": [
+      "O Inf",
+      "D Inf"
     ],
     "adp": null
   },
