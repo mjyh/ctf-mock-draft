@@ -7,7 +7,7 @@
     <style>
         body {
             background-color: #212121;
-            color: #e0e0e0;
+            color: #eeeeee;
             font-family: sans-serif;
             padding: 15px;
             max-width: 1900px;
@@ -15,7 +15,7 @@
         }
 
         h1, h2, h3 {
-            color: #3a7bdb;
+            color: #d4af37; /* Gold color */
             margin-top: 0;
             margin-bottom: 10px;
         }
@@ -142,6 +142,7 @@
             font-size: 16px;
             font-weight: bold;
             margin-bottom: 6px;
+            color: #d4af37; /* Gold color */
         }
 
         .team-leadership {
@@ -176,7 +177,7 @@
         .button {
             background-color: #4a6b99;
             border: none;
-            color: #e0e0e0;
+            color: #eeeeee;
             padding: 4px 8px;
             margin: 3px;
             font-size: 12px;
@@ -297,7 +298,7 @@
         }
 
         .back-link {
-            color: #3a7bdb;
+            color: #d4af37; /* Gold color */
             text-decoration: none;
             display: inline-block;
             margin-bottom: 15px;
@@ -332,20 +333,19 @@
     
     <div class="container">
         <div class="left-pane">
-            <h2>Teams</h2>
             
             <div class="team-grid">
                 {% for team in teams|sort(attribute='pick_order') %}
                 <div class="team-card" id="team-{{ team.team_id }}">
-                    <div class="team-name">{{ team.pick_order }}. {{ team.team_name }}</div>
+                    <div class="team-name">{{ team.team_name }}</div>
                     
                     <div class="team-leadership">
-                        <strong>Captain:</strong> {{ team.captain_info.name|e }}
+                        Captain: {{ team.captain_info.name|e }}
                     </div>
                     
                     {% if team.co_captain_info %}
                     <div class="team-leadership">
-                        <strong>Co-Captain:</strong>
+                        Co-Captain:
                         {% for co_captain in team.co_captain_info %}
                         {{ co_captain.name|e }}{% if not loop.last %}, {% endif %}
                         {% endfor %}
@@ -353,7 +353,7 @@
                     {% endif %}
                     
                     <div class="team-picks">
-                        <strong>Picks:</strong>
+                        Picks:
                         <div class="pick-list">
                             <!-- Picks will be dynamically added here -->
                         </div>
@@ -505,7 +505,7 @@
                 draftBtn.style.paddingRight = '12px';
                 draftBtn.style.fontSize = '16px';
                 draftBtn.style.fontWeight = 'normal';
-                draftBtn.style.color = '#e0e0e0';
+                draftBtn.style.color = '#eeeeee';
                 draftBtn.textContent = 'Draft';
                 draftBtn.onclick = () => draftPlayer(player.player_id);
                 card.appendChild(draftBtn);
