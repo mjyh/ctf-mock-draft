@@ -9,28 +9,30 @@
             background-color: #1e1e2f;
             color: white;
             font-family: sans-serif;
-            padding: 20px;
+            padding: 15px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         h1, h2, h3 {
             color: #4e91fc;
+            margin-top: 0;
+            margin-bottom: 10px;
         }
 
         .header {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .banners-container {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 12px;
         }
 
         .banner {
-            padding: 10px;
-            border-radius: 8px;
+            padding: 7px;
+            border-radius: 6px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -86,16 +88,16 @@
         }
 
         .left-pane, .right-pane {
-            padding: 15px;
+            padding: 10px;
             background-color: #2a2a40;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
         }
 
         .left-pane {
             flex: 5;
             min-width: 900px;
-            max-height: calc(100vh - 200px);
+            max-height: calc(100vh - 170px);
             overflow-y: auto;
             overflow-x: hidden;
         }
@@ -118,8 +120,8 @@
 
         .team-card {
             background-color: #333350;
-            border-radius: 6px;
-            padding: 10px;
+            border-radius: 5px;
+            padding: 7px;
             min-width: 180px;
             max-width: 200px;
             flex: 0 0 auto;
@@ -139,7 +141,7 @@
         }
 
         .team-picks {
-            margin-top: 10px;
+            margin-top: 6px;
             flex-grow: 1;
         }
 
@@ -166,9 +168,9 @@
             background-color: #4e91fc;
             border: none;
             color: white;
-            padding: 10px 15px;
-            margin: 5px;
-            font-size: 14px;
+            padding: 7px 12px;
+            margin: 3px;
+            font-size: 13px;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -199,9 +201,9 @@
 
         .player-card {
             background-color: #333350;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 6px;
+            padding: 7px;
+            margin-bottom: 7px;
+            border-radius: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -213,11 +215,11 @@
 
         .role-tag {
             display: inline-block;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-right: 4px;
-            margin-bottom: 4px;
-            font-size: 12px;
+            padding: 1px 4px;
+            border-radius: 3px;
+            margin-right: 3px;
+            margin-bottom: 2px;
+            font-size: 11px;
         }
 
         .o-inf { background-color: #ff6666; } /* lighter red */
@@ -232,14 +234,14 @@
         .infil { background-color: #9966cc; } /* purple */
 
         .search-bar {
-            padding: 10px;
+            padding: 7px;
             width: 100%;
             box-sizing: border-box;
             background-color: #333350;
             border: 1px solid #444;
             color: white;
             border-radius: 4px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .actions {
@@ -343,7 +345,7 @@
             <h2>Undrafted Players</h2>
             <input type="text" id="playerSearch" class="search-bar" placeholder="Search players...">
             
-            <div id="undraftedPlayers" style="max-height: calc(100vh - 350px); overflow-y: auto;">
+            <div id="undraftedPlayers" style="max-height: calc(100vh - 290px); overflow-y: auto;">
                 <!-- Undrafted players will be displayed here -->
             </div>
         </div>
