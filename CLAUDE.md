@@ -9,6 +9,12 @@
 - NEVER automatically add or commit changes with git - wait for explicit instruction to commit
 - Do not add explanatory messages or summaries after listing changes
 
+## UI Design
+- Color scheme: Dark gray background (#212121) with gold accents (#d4af37)
+- Banner layout: Draft key (flex: 2), Remove button (flex: 1.5), Submit button (flex: 1.5), Round display (flex: 1), Pick display (flex: 1), Team display (flex: 2)
+- Team cards should be arranged in a horizontal row with equal spacing
+- Player cards use clear spacing with role tags for better visibility
+
 ## Setup
 - Install dependencies: `pip install -r requirements.txt`
 - Create virtual environment: `python -m venv venv`

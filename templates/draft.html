@@ -48,22 +48,34 @@
         }
 
         .remove-banner {
-            background-color: #e74c3c;
-            flex: 2;
+            background-color: #b25f5b;
+            flex: 1.5;
         }
 
         .submit-banner {
-            background-color: #2ecc71;
-            flex: 2;
+            background-color: #4aaa73;
+            flex: 1.5;
         }
 
-        .round-info-banner {
-            background-color: transparent;
+        .round-banner, .pick-banner {
+            background-color: #212121;
             border: 2px solid #d4af37;
             color: #d4af37;
-            flex: 4;
+            flex: 1;
             font-weight: bold;
             font-size: 18px;
+            margin: 0 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .team-banner {
+            background-color: #212121;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            flex: 2;
+            font-size: 20px;
+            margin: 0 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .draft-key {
@@ -328,8 +340,14 @@
         <div class="banner submit-banner">
             <button id="submitDraftBtn" class="banner-button submit">Submit Draft</button>
         </div>
-        <div class="banner round-info-banner" id="current-pick">
-            <!-- Current pick info will be displayed here -->
+        <div class="banner round-banner" id="current-round">
+            <!-- Round info will be displayed here -->
+        </div>
+        <div class="banner pick-banner" id="current-pick">
+            <!-- Pick info will be displayed here -->
+        </div>
+        <div class="banner team-banner" id="current-team">
+            <!-- Team info will be displayed here -->
         </div>
     </div>
     
@@ -581,7 +599,9 @@
         // Update the current pick display
         function updateCurrentPick() {
             const nextTeam = determineNextPick();
+            const currentRoundElem = document.getElementById('current-round');
             const currentPickElem = document.getElementById('current-pick');
+            const currentTeamElem = document.getElementById('current-team');
             
             if (nextTeam) {
                 const numTeams = allTeams.length;
@@ -589,9 +609,13 @@
                 const roundNumber = Math.floor((currentPickNumber - 1) / numTeams) + 1;
                 const pickInRound = ((currentPickNumber - 1) % numTeams) + 1;
                 
-                currentPickElem.textContent = `Round ${roundNumber}, Pick ${pickInRound}: ${nextTeam.team_name}`;
+                currentRoundElem.textContent = `Round ${roundNumber}`;
+                currentPickElem.textContent = `Pick ${pickInRound}`;
+                currentTeamElem.textContent = nextTeam.team_name;
             } else {
-                currentPickElem.textContent = 'Draft complete';
+                currentRoundElem.textContent = `Complete`;
+                currentPickElem.textContent = `Draft`;
+                currentTeamElem.textContent = `Finished`;
             }
         }
         
