@@ -15,7 +15,7 @@
         }
 
         h1, h2, h3 {
-            color: #4e91fc;
+            color: #3a7bdb;
             margin-top: 0;
             margin-bottom: 10px;
         }
@@ -58,7 +58,7 @@
         }
 
         .round-info-banner {
-            background-color: #4e91fc;
+            background-color: #3a7bdb;
             flex: 4;
             font-weight: bold;
             font-size: 14px;
@@ -173,7 +173,7 @@
         /* Styles for current pick info now in the banner */
 
         .button {
-            background-color: #4e91fc;
+            background-color: #3a7bdb;
             border: none;
             color: white;
             padding: 4px 8px;
@@ -186,7 +186,7 @@
         }
 
         .button:hover {
-            background-color: #3674e0;
+            background-color: #2c5ca8;
         }
 
         .button.remove {
@@ -290,7 +290,7 @@
         }
 
         .back-link {
-            color: #4e91fc;
+            color: #3a7bdb;
             text-decoration: none;
             display: inline-block;
             margin-bottom: 15px;
@@ -446,23 +446,30 @@
                 const info = document.createElement('div');
                 info.className = 'player-info';
                 
-                // Create player name section
+                // Create player name section with flex layout for name and ADP
                 const nameDiv = document.createElement('div');
-                nameDiv.style.overflow = 'hidden';
-                nameDiv.style.textOverflow = 'ellipsis';
-                nameDiv.style.whiteSpace = 'nowrap';
+                nameDiv.style.display = 'flex';
+                nameDiv.style.justifyContent = 'space-between';
+                nameDiv.style.alignItems = 'center';
                 
-                // Create a strong element for the player name
-                const nameStrong = document.createElement('strong');
-                nameStrong.textContent = player.name;
-                nameDiv.appendChild(nameStrong);
+                // Create element for the player name
+                const nameElement = document.createElement('div');
+                nameElement.style.overflow = 'hidden';
+                nameElement.style.textOverflow = 'ellipsis';
+                nameElement.style.whiteSpace = 'nowrap';
+                nameElement.style.fontWeight = 'normal';
+                nameElement.textContent = player.name;
+                nameDiv.appendChild(nameElement);
                 
                 // Add ADP info if available
                 if (player.adp) {
                     const adpSpan = document.createElement('span');
-                    adpSpan.textContent = ` (${player.adp.toFixed(1)})`;
-                    adpSpan.style.fontSize = '11px';
-                    adpSpan.style.marginLeft = '3px';
+                    // Format ADP to remove .0 if it's a whole number
+                    const adpValue = player.adp;
+                    adpSpan.textContent = Number.isInteger(adpValue) ? adpValue.toString() : adpValue.toFixed(1);
+                    adpSpan.style.color = '#999';
+                    adpSpan.style.marginLeft = '10px';
+                    adpSpan.style.flexShrink = '0';
                     nameDiv.appendChild(adpSpan);
                 }
                 
