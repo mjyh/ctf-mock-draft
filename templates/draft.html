@@ -173,7 +173,7 @@
         /* Styles for current pick info now in the banner */
 
         .button {
-            background-color: #3a7bdb;
+            background-color: #4a6b99;
             border: none;
             color: white;
             padding: 4px 8px;
@@ -186,7 +186,7 @@
         }
 
         .button:hover {
-            background-color: #2c5ca8;
+            background-color: #3a5b87;
         }
 
         .button.remove {
@@ -210,19 +210,25 @@
 
         .player-card {
             background-color: #333333;
-            padding: 5px 7px;
+            padding: 0 0 0 7px;
             border-radius: 4px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: stretch;
             height: 100%;
             border-left: 3px solid #555;
+            min-height: 50px;
+            margin-bottom: 6px;
         }
 
         .player-info {
             flex: 1;
             overflow: hidden;
             margin-right: 5px;
+            padding: 8px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .role-tag {
@@ -491,6 +497,11 @@
                 // Add draft button
                 const draftBtn = document.createElement('button');
                 draftBtn.className = 'button';
+                draftBtn.style.height = '100%';
+                draftBtn.style.minHeight = '40px';
+                draftBtn.style.margin = '0 0 0 8px';
+                draftBtn.style.paddingLeft = '12px';
+                draftBtn.style.paddingRight = '12px';
                 draftBtn.textContent = 'Draft';
                 draftBtn.onclick = () => draftPlayer(player.player_id);
                 card.appendChild(draftBtn);
