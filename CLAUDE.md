@@ -6,6 +6,7 @@
 
 ## Important Notes
 - NEVER run the server after making code changes (don't run python app.py or flask run)
+- NEVER automatically add or commit changes with git - wait for explicit instruction to commit
 
 ## Setup
 - Install dependencies: `pip install -r requirements.txt`
