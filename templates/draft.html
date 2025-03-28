@@ -58,10 +58,12 @@
         }
 
         .round-info-banner {
-            background-color: #3a7bdb;
+            background-color: transparent;
+            border: 2px solid #d4af37;
+            color: #d4af37;
             flex: 4;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 18px;
         }
 
         .draft-key {
@@ -340,20 +342,21 @@
                     <div class="team-name">{{ team.team_name }}</div>
                     
                     <div class="team-leadership">
-                        Captain: {{ team.captain_info.name|e }}
+                        <span style="font-size: 13px;">Captain: {{ team.captain_info.name|e }}</span>
                     </div>
                     
                     {% if team.co_captain_info %}
                     <div class="team-leadership">
-                        Co-Captain:
+                        <span style="font-size: 13px;">Co-Captain:
                         {% for co_captain in team.co_captain_info %}
                         {{ co_captain.name|e }}{% if not loop.last %}, {% endif %}
                         {% endfor %}
+                        </span>
                     </div>
                     {% endif %}
                     
                     <div class="team-picks">
-                        Picks:
+                        <span style="font-size: 13px;">Picks:</span>
                         <div class="pick-list">
                             <!-- Picks will be dynamically added here -->
                         </div>
