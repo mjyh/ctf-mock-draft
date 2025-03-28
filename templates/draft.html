@@ -109,12 +109,13 @@
             min-width: 500px;
             max-width: 650px;
             overflow-y: visible;
+            padding-right: 10px;
         }
         
         #undraftedPlayers {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
+            gap: 4px;
         }
         
         .team-grid {
@@ -175,7 +176,7 @@
         .button {
             background-color: #4a6b99;
             border: none;
-            color: white;
+            color: #e0e0e0;
             padding: 4px 8px;
             margin: 3px;
             font-size: 12px;
@@ -218,7 +219,7 @@
             height: 100%;
             border-left: 3px solid #555;
             min-height: 40px;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .player-info {
@@ -366,7 +367,7 @@
             <h2>Undrafted Players</h2>
             <input type="text" id="playerSearch" class="search-bar" placeholder="Search players...">
             
-            <div id="undraftedPlayers" style="max-height: calc(100vh - 290px); overflow-y: auto;">
+            <div id="undraftedPlayers" style="max-height: calc(100vh - 290px); overflow-y: auto; padding-right: 8px;">
                 <!-- Undrafted players will be displayed here -->
             </div>
         </div>
@@ -502,6 +503,9 @@
                 draftBtn.style.margin = '0 0 0 8px';
                 draftBtn.style.paddingLeft = '12px';
                 draftBtn.style.paddingRight = '12px';
+                draftBtn.style.fontSize = '16px';
+                draftBtn.style.fontWeight = 'normal';
+                draftBtn.style.color = '#e0e0e0';
                 draftBtn.textContent = 'Draft';
                 draftBtn.onclick = () => draftPlayer(player.player_id);
                 card.appendChild(draftBtn);

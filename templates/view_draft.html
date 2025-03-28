@@ -6,8 +6,8 @@
     <title>View Draft: {{ draft.user_name }} - Infantry Online CTF</title>
     <style>
         body {
-            background-color: #1e1e2f;
-            color: white;
+            background-color: #212121;
+            color: #e0e0e0;
             font-family: sans-serif;
             padding: 20px;
             max-width: 1200px;
@@ -15,7 +15,7 @@
         }
 
         h1, h2, h3 {
-            color: #4e91fc;
+            color: #3a7bdb;
         }
 
         .header {
@@ -29,7 +29,7 @@
         }
 
         .section {
-            background-color: #2a2a40;
+            background-color: #2a2a2a;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -42,7 +42,7 @@
         }
 
         .team-card {
-            background-color: #333350;
+            background-color: #333333;
             border-radius: 6px;
             padding: 15px;
             height: 100%;
@@ -54,7 +54,7 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #4e91fc;
+            color: #3a7bdb;
         }
 
         .team-leadership {
@@ -86,23 +86,26 @@
 
         .role-tag {
             display: inline-block;
-            padding: 2px 6px;
-            border-radius: 4px;
+            padding: 1px 3px;
+            border-radius: 2px;
             margin-right: 4px;
-            margin-bottom: 4px;
-            font-size: 12px;
+            margin-bottom: 2px;
+            font-size: 10px;
+            color: #fff;
+            background-color: rgba(100, 100, 100, 0.5);
+            font-weight: normal;
         }
-
-        .o-inf { background-color: #ff6666; } /* lighter red */
-        .d-inf { background-color: #cc0000; } /* darker red */
-        .o-hvy { background-color: #6699ff; } /* lighter blue */
-        .d-hvy { background-color: #0044cc; } /* darker blue */
-        .foot-jt, .jt { background-color: #cccccc; } /* light gray */
-        .vehicle-jt { background-color: #888888; } /* dark gray */
-        .med { background-color: #ffcc00; } /* yellow */
-        .eng { background-color: #cc7722; } /* orange-brown */
-        .sl { background-color: #88cc88; } /* light green */
-        .infil { background-color: #9966cc; } /* purple */
+        
+        .o-inf { background-color: rgba(255, 102, 102, 0.5); } /* lighter red */
+        .d-inf { background-color: rgba(204, 0, 0, 0.4); } /* darker red */
+        .o-hvy { background-color: rgba(102, 153, 255, 0.5); } /* lighter blue */
+        .d-hvy { background-color: rgba(0, 68, 204, 0.4); } /* darker blue */
+        .foot-jt, .jt { background-color: rgba(204, 204, 204, 0.4); } /* light gray */
+        .vehicle-jt { background-color: rgba(136, 136, 136, 0.4); } /* dark gray */
+        .med { background-color: rgba(255, 204, 0, 0.4); } /* yellow */
+        .eng { background-color: rgba(204, 119, 34, 0.4); } /* orange-brown */
+        .sl { background-color: rgba(136, 204, 136, 0.4); } /* light green */
+        .infil { background-color: rgba(153, 102, 204, 0.4); } /* purple */
 
         .draft-info {
             margin-bottom: 15px;
@@ -113,7 +116,7 @@
         }
 
         .back-link {
-            color: #4e91fc;
+            color: #3a7bdb;
             text-decoration: none;
             display: inline-block;
             margin-bottom: 15px;
@@ -124,9 +127,9 @@
         }
         
         .button {
-            background-color: #4e91fc;
+            background-color: #4a6b99;
             border: none;
-            color: white;
+            color: #e0e0e0;
             padding: 10px 15px;
             font-size: 14px;
             border-radius: 4px;
@@ -138,7 +141,7 @@
         }
         
         .button:hover {
-            background-color: #3674e0;
+            background-color: #3a5b87;
         }
     </style>
 </head>
