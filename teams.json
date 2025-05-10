@@ -1,56 +1,42 @@
 [
   {
-    "team_id": 101,
-    "team_name": "We Are All Friends Here",
-    "captain": 102,
+    "team_id": 1000,
+    "team_name": "Take Yer Beatin",
+    "captain": 69,
     "co_captain": [
-      1
-    ],
-    "pick_order": 1
-  },
-  {
-    "team_id": 102,
-    "team_name": "Takuteku Deshtrushyon",
-    "captain": 103,
-    "co_captain": [
-      2
-    ],
-    "pick_order": 2
-  },
-  {
-    "team_id": 103,
-    "team_name": "SP",
-    "captain": 104,
-    "co_captain": [
-      3
-    ],
-    "pick_order": 3
-  },
-  {
-    "team_id": 104,
-    "team_name": "Fangs Out",
-    "captain": 105,
-    "co_captain": [
-      4
+      70,
+      71
     ],
     "pick_order": 4
   },
   {
-    "team_id": 105,
-    "team_name": "Posty's Team",
-    "captain": 106,
+    "team_id": 1001,
+    "team_name": "Goliath",
+    "captain": 66,
     "co_captain": [
-      5
+      67,
+      68
     ],
-    "pick_order": 5
+    "pick_order": 2
   },
   {
-    "team_id": 106,
-    "team_name": "Carebear Countdown",
-    "captain": 107,
+    "team_id": 1002,
+    "team_name": "Big Tymers",
+    "captain": 63,
     "co_captain": [
-      6
+      64,
+      65
     ],
-    "pick_order": 6
+    "pick_order": 1
+  },
+  {
+    "team_id": 1003,
+    "team_name": "wuhan clan",
+    "captain": 60,
+    "co_captain": [
+      61,
+      62
+    ],
+    "pick_order": 3
   }
 ]
